@@ -34,7 +34,11 @@ const Cursor: FC<CursorProps> = ({ cursorRef }) => {
 		};
 	}, [cursorMove]);
 
-	return <div className={styles.cursor} ref={cursorRef}></div>;
+	return (
+		<div className={styles.cursor} ref={cursorRef}>
+			{/* <div className={styles.symbol}>A</div> */}
+		</div>
+	);
 };
 
 export default Cursor;

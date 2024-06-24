@@ -5,8 +5,10 @@ import { useContext, useEffect, useRef, useState } from "react";
 import SplitType from "split-type";
 import { gsapContext } from "./layout";
 import styles from "./page.module.scss";
+import { FaExternalLinkAlt } from "react-icons/fa";
 import SideNav from "@/components/sideNav/sideNav.component";
 import portfolioData from "../../public/portfolio.json";
+import emailjs from "@emailjs/browser";
 
 export default function Home() {
 	const heroTextsRef = useRef(null);
@@ -15,6 +17,10 @@ export default function Home() {
 	const navItemsRef3 = useRef<HTMLAnchorElement>(null);
 	const gsap = useContext(gsapContext).gsap;
 	const cursorRef = useContext(gsapContext).cursorRef;
+
+	const [name, setName] = useState("");
+	const [email, setEmail] = useState("");
+	const [message, setMessage] = useState("");
 
 	useGSAP(() => {
 		gsap.set([navItemsRef1.current, navItemsRef2.current, navItemsRef3.current], { x: "-101%", opacity: 0 });
@@ -46,42 +52,20 @@ export default function Home() {
 		);
 	});
 
-	useEffect(() => {
-		const navItemsRefs = [navItemsRef1, navItemsRef2, navItemsRef3];
-		const cursor = cursorRef.current;
+	const cursor = cursorRef.current;
+	const linkMouseEnter = () => {
+		if (cursor) {
+			cursor.style.width = "5rem";
+			cursor.style.height = "5rem";
+		}
+	};
 
-		const handleMouseEnter = () => {
-			if (cursor) {
-				cursor.style.width = "5rem";
-				cursor.style.height = "5rem";
-			}
-		};
-
-		const handleMouseLeave = () => {
-			if (cursor) {
-				cursor.style.width = "1.5rem";
-				cursor.style.height = "1.5rem";
-			}
-		};
-
-		navItemsRefs.forEach((navItemRef) => {
-			const navItem = navItemRef.current;
-			if (navItem) {
-				navItem.addEventListener("mouseenter", handleMouseEnter);
-				navItem.addEventListener("mouseleave", handleMouseLeave);
-			}
-		});
-
-		return () => {
-			navItemsRefs.forEach((navItemRef) => {
-				const navItem = navItemRef.current;
-				if (navItem) {
-					navItem.removeEventListener("mouseenter", handleMouseEnter);
-					navItem.removeEventListener("mouseleave", handleMouseLeave);
-				}
-			});
-		};
-	}, []);
+	const linkMouseLeave = () => {
+		if (cursor) {
+			cursor.style.width = "1.5rem";
+			cursor.style.height = "1.5rem";
+		}
+	};
 
 	const projectMouseEnter = (image: String) => {
 		if (cursorRef.current) {
@@ -105,9 +89,22 @@ export default function Home() {
 		}
 	};
 
+	const submitContact = (e: any) => {
+		e.preventDefault();
+		// alert(`${name}, ${email}m ${message}`);
+		emailjs
+			.send(process.env.NEXT_PUBLIC_EMAIL_SERVICE_ID!, process.env.NEXT_PUBLIC_EMAIL_TEMPLATE_ID!, { from_name: name, message: message, from_email: email }, process.env.NEXT_PUBLIC_EMAIL_PUBLIC_KEY)
+			.then((res) => {
+				console.log(res);
+			})
+			.catch((err: string) => {
+				console.log(err);
+			});
+	};
+
 	return (
 		<>
-			<SideNav navRefs={[navItemsRef1, navItemsRef2, navItemsRef3]}></SideNav>
+			<SideNav navRefs={[navItemsRef1, navItemsRef2, navItemsRef3]} mouseEnter={linkMouseEnter} mouseLeave={linkMouseLeave}></SideNav>
 			<div className={styles.landing}>
 				<nav>
 					<h1>STron</h1>
@@ -130,39 +127,50 @@ export default function Home() {
 						<p style={{ whiteSpace: "pre-line" }}>{portfolioData.about}</p>
 					</div>
 					<div className={styles.bento}>
-						<div className={styles.section}>
-							<h3>1+ Years Work Experience</h3>
-						</div>
-						<div className={styles.section}>
-							<h3>0 Successfull Clients</h3>
-						</div>
-						<div className={styles.section}>
-							<h3>1 Completed Projects</h3>
-						</div>
-						<div className={styles.section}>
-							<h3>Dont Know Something</h3>
-						</div>
+						{portfolioData.bento.map((bento, index) => {
+							return (
+								<div key={index} className={styles.section}>
+									<h3>{bento}</h3>
+								</div>
+							);
+						})}
 					</div>
 				</div>
 				<div className={styles.bodyBlack}>
-					<div className={styles.projects} id="projects">
+					<div className={styles.projects} id="Projects">
 						<h1>Selected Projects</h1>
 						{portfolioData.projects.map((project, index) => {
 							return (
-								<>
-									<div className={styles.project} id="project" onMouseEnter={() => projectMouseEnter(project.Image)} onMouseLeave={() => projectMouseLeave()}>
-										<div className={styles.left}>
-											<h2>
-												<span>#{index + 1}</span> {project.title}
-											</h2>
-										</div>
-										<div className={styles.right}>
-											<a href="#">Learn More</a>
-										</div>
+								<div key={index} className={styles.project} id="project">
+									<div className={styles.left} onMouseEnter={() => projectMouseEnter(project.Image)} onMouseLeave={() => projectMouseLeave()}>
+										<h2>
+											<span>#{index + 1}</span> {project.title}
+										</h2>
 									</div>
-								</>
+									<div className={styles.right} onMouseEnter={() => linkMouseEnter()} onMouseLeave={() => linkMouseLeave()}>
+										<a href="#">
+											Visit <FaExternalLinkAlt />
+										</a>
+									</div>
+								</div>
 							);
 						})}
+					</div>
+				</div>
+				<div className={styles.bodyBlack}>
+					<div className={styles.contact} id="Contact">
+						<div className={styles.left}>
+							<h1>Want to make a project together?</h1>
+							<h3>Rech out to me.</h3>
+						</div>
+						<div className={styles.right}>
+							<div className={styles.smallInputs}>
+								<input id="Name" type="text" required placeholder="Full name" value={name} onChange={(e) => setName(e.target.value)} />
+								<input id="Email" type="text" required placeholder="Email" value={email} onChange={(e) => setEmail(e.target.value)} />
+							</div>
+							<textarea className={styles.messageInput} id="Message" required placeholder="Message" rows={5} value={message} onChange={(e) => setMessage(e.target.value)} />
+							<input type="button" value="Send" onClick={(e) => submitContact(e)} />
+						</div>
 					</div>
 				</div>
 			</div>

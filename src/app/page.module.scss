@@ -143,6 +143,66 @@
 		font-size: 5rem;
 		margin-bottom: 2rem;
 	}
+	.contact {
+		width: 60%;
+		margin-top: 3rem;
+		margin-inline: auto;
+		display: flex;
+		align-items: center;
+		gap: 2rem;
+
+		.left {
+			width: 55%;
+
+			h1 {
+				font-size: 3.5rem;
+			}
+			h3 {
+				font-size: 1.5rem;
+			}
+		}
+
+		.right {
+			display: flex;
+			flex-direction: column;
+			justify-content: center;
+			width: 40%;
+
+			input[type="text"],
+			textarea {
+				padding: 0.5rem 1rem;
+				font-size: 1.2rem;
+				background-color: transparent;
+				border: none;
+				border-bottom: 1px solid #fff;
+				color: #fff;
+				mix-blend-mode: difference;
+				font-family: "Playfair Display", sans-serif;
+			}
+
+			.smallInputs {
+				display: flex;
+				justify-content: center;
+				align-items: center;
+				gap: 2rem;
+				margin-bottom: 1.5rem;
+
+				input {
+					width: calc(50% - 1rem);
+				}
+			}
+
+			input[type="button"] {
+				background-color: #fff;
+				mix-blend-mode: difference;
+				padding: 0.5rem 1rem;
+				margin-top: 2rem;
+				width: 8rem;
+				border: none;
+				align-self: flex-end;
+			}
+		}
+	}
 
 	.about {
 		width: 60%;
@@ -185,6 +245,8 @@
 		background-color: rgba(13, 17, 18, 1);
 		width: 100%;
 		padding-block: 3rem;
+		color: #fff;
+		// mix-blend-mode: difference;
 	}
 	.projects {
 		color: #fff;
@@ -208,7 +270,11 @@
 				flex-direction: column;
 				justify-content: center;
 				padding-block: 1.5rem;
-				// padding-inline: 1rem;
+				padding-inline: 1rem;
+			}
+
+			.left {
+				width: 90%;
 			}
 			h2 {
 				font-size: 2rem;
@@ -218,6 +284,9 @@
 			a {
 				text-decoration: none;
 				color: #fff;
+				display: flex;
+				align-items: center;
+				gap: 0.5rem;
 			}
 		}
 	}
