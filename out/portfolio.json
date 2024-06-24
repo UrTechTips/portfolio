@@ -1,0 +1,15 @@
+{
+	"about": "Hello! I'm Sai Sreenadh, known professionally as STron, a student based in India. I specialize in UI design and full stack development, particularly with Next.js and Figma. I hold a B.Tech degree and am passionate about creating user-friendly interfaces and robust web applications.\nWhen I'm not coding, I enjoy playing video games and reading books. My goal is to achieve success in the tech industry by continuously learning and innovating.",
+	"projects": [
+		{
+			"title": "TicTacToe",
+			"description": "Multiplayer TicTacToe Game with AI Builtin to enjoy playing solo.",
+			"Image": "/images/tictactoe-web.png"
+		},
+		{
+			"title": "FitTrack",
+			"description": "FitTrack Website",
+			"Image": "https://media.wired.com/photos/5a5550257c03c23a9897a1aa/16:9/w_1984,h_1116,c_limit/Google_G_Logo-2-f.png"
+		}
+	]
+}
