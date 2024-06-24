@@ -1,95 +1,171 @@
-import Image from "next/image";
-import styles from "./page.module.css";
+"use client";
+import { useGSAP } from "@gsap/react";
+import { DotLottieReact } from "@lottiefiles/dotlottie-react";
+import { useContext, useEffect, useRef, useState } from "react";
+import SplitType from "split-type";
+import { gsapContext } from "./layout";
+import styles from "./page.module.scss";
+import SideNav from "@/components/sideNav/sideNav.component";
+import portfolioData from "../../public/portfolio.json";
 
 export default function Home() {
-  return (
-    <main className={styles.main}>
-      <div className={styles.description}>
-        <p>
-          Get started by editing&nbsp;
-          <code className={styles.code}>src/app/page.tsx</code>
-        </p>
-        <div>
-          <a
-            href="https://vercel.com?utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            By{" "}
-            <Image
-              src="/vercel.svg"
-              alt="Vercel Logo"
-              className={styles.vercelLogo}
-              width={100}
-              height={24}
-              priority
-            />
-          </a>
-        </div>
-      </div>
+	const heroTextsRef = useRef(null);
+	const navItemsRef1 = useRef<HTMLAnchorElement>(null);
+	const navItemsRef2 = useRef<HTMLAnchorElement>(null);
+	const navItemsRef3 = useRef<HTMLAnchorElement>(null);
+	const gsap = useContext(gsapContext).gsap;
+	const cursorRef = useContext(gsapContext).cursorRef;
 
-      <div className={styles.center}>
-        <Image
-          className={styles.logo}
-          src="/next.svg"
-          alt="Next.js Logo"
-          width={180}
-          height={37}
-          priority
-        />
-      </div>
+	useGSAP(() => {
+		gsap.set([navItemsRef1.current, navItemsRef2.current, navItemsRef3.current], { x: "-101%", opacity: 0 });
 
-      <div className={styles.grid}>
-        <a
-          href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-          className={styles.card}
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <h2>
-            Docs <span>-&gt;</span>
-          </h2>
-          <p>Find in-depth information about Next.js features and API.</p>
-        </a>
+		const typeSplit = SplitType.create(heroTextsRef.current!, {
+			types: ["words"],
+			tagName: "span",
+		});
 
-        <a
-          href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-          className={styles.card}
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <h2>
-            Learn <span>-&gt;</span>
-          </h2>
-          <p>Learn about Next.js in an interactive course with&nbsp;quizzes!</p>
-        </a>
+		const tl = gsap.timeline();
+		tl.from(typeSplit.words, {
+			y: "80%",
+			opacity: 0,
+			rotationZ: "6",
+			duration: 0.4,
+			ease: "Power.inOut",
+			stagger: 0.15,
+		});
+		tl.to(
+			[navItemsRef1.current, navItemsRef2.current, navItemsRef3.current],
+			{
+				opacity: 1,
+				x: 0,
+				duration: 1.5,
+				stagger: 0.35,
+				ease: "power.inOut",
+			},
+			"-=1"
+		);
+	});
 
-        <a
-          href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-          className={styles.card}
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <h2>
-            Templates <span>-&gt;</span>
-          </h2>
-          <p>Explore starter templates for Next.js.</p>
-        </a>
+	useEffect(() => {
+		const navItemsRefs = [navItemsRef1, navItemsRef2, navItemsRef3];
+		const cursor = cursorRef.current;
 
-        <a
-          href="https://vercel.com/new?utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-          className={styles.card}
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <h2>
-            Deploy <span>-&gt;</span>
-          </h2>
-          <p>
-            Instantly deploy your Next.js site to a shareable URL with Vercel.
-          </p>
-        </a>
-      </div>
-    </main>
-  );
+		const handleMouseEnter = () => {
+			if (cursor) {
+				cursor.style.width = "5rem";
+				cursor.style.height = "5rem";
+			}
+		};
+
+		const handleMouseLeave = () => {
+			if (cursor) {
+				cursor.style.width = "1.5rem";
+				cursor.style.height = "1.5rem";
+			}
+		};
+
+		navItemsRefs.forEach((navItemRef) => {
+			const navItem = navItemRef.current;
+			if (navItem) {
+				navItem.addEventListener("mouseenter", handleMouseEnter);
+				navItem.addEventListener("mouseleave", handleMouseLeave);
+			}
+		});
+
+		return () => {
+			navItemsRefs.forEach((navItemRef) => {
+				const navItem = navItemRef.current;
+				if (navItem) {
+					navItem.removeEventListener("mouseenter", handleMouseEnter);
+					navItem.removeEventListener("mouseleave", handleMouseLeave);
+				}
+			});
+		};
+	}, []);
+
+	const projectMouseEnter = (image: String) => {
+		if (cursorRef.current) {
+			cursorRef.current.style.borderRadius = "5px";
+			cursorRef.current.style.border = "1px solid #fff";
+			cursorRef.current.style.width = "20rem";
+			cursorRef.current.style.height = `${(20 * 9) / 16}rem`;
+			cursorRef.current.style.mixBlendMode = "normal";
+			cursorRef.current.style.backgroundImage = `url(${image})`;
+		}
+	};
+
+	const projectMouseLeave = () => {
+		if (cursorRef.current) {
+			cursorRef.current.style.borderRadius = "50%";
+			cursorRef.current.style.border = "none";
+			cursorRef.current.style.width = "1.5rem";
+			cursorRef.current.style.height = "1.5rem";
+			cursorRef.current.style.mixBlendMode = "difference";
+			cursorRef.current.style.backgroundImage = `none`;
+		}
+	};
+
+	return (
+		<>
+			<SideNav navRefs={[navItemsRef1, navItemsRef2, navItemsRef3]}></SideNav>
+			<div className={styles.landing}>
+				<nav>
+					<h1>STron</h1>
+				</nav>
+				<div className={styles.hero}>
+					<h1 className={styles.heroText} ref={heroTextsRef}>
+						I am Sai Sreenadh. A Full-Stack Developer.
+					</h1>
+				</div>
+
+				<div className={styles.scrollIndicator}>
+					<DotLottieReact className={styles.scrollAnimation} src="https://lottie.host/e95aa212-67e4-4e38-8bc4-3e89157c4374/TNOAsPpHZO.json" backgroundColor="#FFFFFF00" speed={1} loop autoplay />
+					<h5>Scroll Down</h5>
+				</div>
+			</div>
+			<div className={styles.body}>
+				<div className={styles.about} id="About">
+					<div className={styles.mainSection}>
+						<h1>About</h1>
+						<p style={{ whiteSpace: "pre-line" }}>{portfolioData.about}</p>
+					</div>
+					<div className={styles.bento}>
+						<div className={styles.section}>
+							<h3>1+ Years Work Experience</h3>
+						</div>
+						<div className={styles.section}>
+							<h3>0 Successfull Clients</h3>
+						</div>
+						<div className={styles.section}>
+							<h3>1 Completed Projects</h3>
+						</div>
+						<div className={styles.section}>
+							<h3>Dont Know Something</h3>
+						</div>
+					</div>
+				</div>
+				<div className={styles.bodyBlack}>
+					<div className={styles.projects} id="projects">
+						<h1>Selected Projects</h1>
+						{portfolioData.projects.map((project, index) => {
+							return (
+								<>
+									<div className={styles.project} id="project" onMouseEnter={() => projectMouseEnter(project.Image)} onMouseLeave={() => projectMouseLeave()}>
+										<div className={styles.left}>
+											<h2>
+												<span>#{index + 1}</span> {project.title}
+											</h2>
+										</div>
+										<div className={styles.right}>
+											<a href="#">Learn More</a>
+										</div>
+									</div>
+								</>
+							);
+						})}
+					</div>
+				</div>
+			</div>
+		</>
+	);
 }

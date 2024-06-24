@@ -1,0 +1,22 @@
+.cursor {
+	z-index: 99999999999;
+	width: 1.5rem;
+	height: 1.5rem;
+	border-radius: 50%;
+
+	position: absolute;
+	background-color: #fff;
+	mix-blend-mode: difference;
+	transform: translate(-50%, -50%);
+	transition: all 0.25s ease-out;
+	pointer-events: none;
+
+	background-size: cover;
+	background-repeat: no-repeat;
+	background-position: center center;
+}
+
+.cursorHover {
+	width: 5rem;
+	height: 5rem;
+}
