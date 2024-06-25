@@ -3,14 +3,16 @@ import SideNav from "@/components/sideNav/sideNav.component";
 import { useGSAP } from "@gsap/react";
 import { DotLottieReact } from "@lottiefiles/dotlottie-react";
 import { useContext, useRef, useState } from "react";
-import { FaExternalLinkAlt } from "react-icons/fa";
+import { FaExternalLinkAlt, FaGithub, FaLinkedin } from "react-icons/fa";
 import SplitType from "split-type";
 import portfolioData from "../../public/portfolio.json";
 import { gsapContext } from "./layout";
 import styles from "./page.module.scss";
 import useCursorAnim from "@/hooks/useCursorAnimations";
+import { useRouter } from "next/navigation";
 
 export default function Home() {
+	const router = useRouter();
 	const heroTextsRef = useRef(null);
 	const navItemsRef1 = useRef<HTMLAnchorElement>(null);
 	const navItemsRef2 = useRef<HTMLAnchorElement>(null);
@@ -69,6 +71,10 @@ export default function Home() {
 		} else {
 			alert(data.error);
 		}
+	};
+
+	const handleSocialClick = () => {
+		router.push("https://google.com");
 	};
 
 	return (
@@ -131,6 +137,10 @@ export default function Home() {
 						<div className={styles.left}>
 							<h1>Want to make a project together?</h1>
 							<h3>Rech out to me.</h3>
+							<div className={styles.icons}>
+								<FaGithub onClick={handleSocialClick} onMouseEnter={cursorAnims.linkMouseEnter} onMouseLeave={cursorAnims.linkMouseLeave} />
+								<FaLinkedin onClick={handleSocialClick} onMouseEnter={cursorAnims.linkMouseEnter} onMouseLeave={cursorAnims.linkMouseLeave} />
+							</div>
 						</div>
 						<div className={styles.right}>
 							<div className={styles.smallInputs}>
@@ -138,7 +148,7 @@ export default function Home() {
 								<input id="Email" type="text" required placeholder="Email" value={email} onChange={(e) => setEmail(e.target.value)} />
 							</div>
 							<textarea className={styles.messageInput} id="Message" required placeholder="Message" rows={5} value={message} onChange={(e) => setMessage(e.target.value)} />
-							<input type="button" value="Send" onClick={(e) => submitContact(e)} />
+							<input type="button" value="Send" onClick={(e) => submitContact(e)} onMouseEnter={cursorAnims.linkMouseEnter} onMouseLeave={cursorAnims.linkMouseLeave} />
 						</div>
 					</div>
 				</div>
