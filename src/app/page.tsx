@@ -1,14 +1,14 @@
 "use client";
+import SideNav from "@/components/sideNav/sideNav.component";
 import { useGSAP } from "@gsap/react";
 import { DotLottieReact } from "@lottiefiles/dotlottie-react";
-import { useContext, useEffect, useRef, useState } from "react";
+import { useContext, useRef, useState } from "react";
+import { FaExternalLinkAlt } from "react-icons/fa";
 import SplitType from "split-type";
+import portfolioData from "../../public/portfolio.json";
 import { gsapContext } from "./layout";
 import styles from "./page.module.scss";
-import { FaExternalLinkAlt } from "react-icons/fa";
-import SideNav from "@/components/sideNav/sideNav.component";
-import portfolioData from "../../public/portfolio.json";
-import emailjs from "@emailjs/browser";
+import useCursorAnim from "@/hooks/useCursorAnimations";
 
 export default function Home() {
 	const heroTextsRef = useRef(null);
@@ -17,6 +17,7 @@ export default function Home() {
 	const navItemsRef3 = useRef<HTMLAnchorElement>(null);
 	const gsap = useContext(gsapContext).gsap;
 	const cursorRef = useContext(gsapContext).cursorRef;
+	const cursorAnims = useCursorAnim(cursorRef);
 
 	const [name, setName] = useState("");
 	const [email, setEmail] = useState("");
@@ -52,59 +53,27 @@ export default function Home() {
 		);
 	});
 
-	const cursor = cursorRef.current;
-	const linkMouseEnter = () => {
-		if (cursor) {
-			cursor.style.width = "5rem";
-			cursor.style.height = "5rem";
-		}
-	};
-
-	const linkMouseLeave = () => {
-		if (cursor) {
-			cursor.style.width = "1.5rem";
-			cursor.style.height = "1.5rem";
-		}
-	};
-
-	const projectMouseEnter = (image: String) => {
-		if (cursorRef.current) {
-			cursorRef.current.style.borderRadius = "5px";
-			cursorRef.current.style.border = "1px solid #fff";
-			cursorRef.current.style.width = "20rem";
-			cursorRef.current.style.height = `${(20 * 9) / 16}rem`;
-			cursorRef.current.style.mixBlendMode = "normal";
-			cursorRef.current.style.backgroundImage = `url(${image})`;
-		}
-	};
-
-	const projectMouseLeave = () => {
-		if (cursorRef.current) {
-			cursorRef.current.style.borderRadius = "50%";
-			cursorRef.current.style.border = "none";
-			cursorRef.current.style.width = "1.5rem";
-			cursorRef.current.style.height = "1.5rem";
-			cursorRef.current.style.mixBlendMode = "difference";
-			cursorRef.current.style.backgroundImage = `none`;
-		}
-	};
-
-	const submitContact = (e: any) => {
+	const submitContact = async (e: any) => {
 		e.preventDefault();
-		// alert(`${name}, ${email}m ${message}`);
-		emailjs
-			.send(process.env.NEXT_PUBLIC_EMAIL_SERVICE_ID!, process.env.NEXT_PUBLIC_EMAIL_TEMPLATE_ID!, { from_name: name, message: message, from_email: email }, process.env.NEXT_PUBLIC_EMAIL_PUBLIC_KEY)
-			.then((res) => {
-				console.log(res);
-			})
-			.catch((err: string) => {
-				console.log(err);
-			});
+		const response = await fetch("/api/contact", {
+			method: "POST",
+			headers: {
+				"Content-Type": "application/json",
+			},
+			body: JSON.stringify({ name, email, message }),
+		});
+
+		const data = await response.json();
+		if (response.ok) {
+			alert(data.message);
+		} else {
+			alert(data.error);
+		}
 	};
 
 	return (
 		<>
-			<SideNav navRefs={[navItemsRef1, navItemsRef2, navItemsRef3]} mouseEnter={linkMouseEnter} mouseLeave={linkMouseLeave}></SideNav>
+			<SideNav navRefs={[navItemsRef1, navItemsRef2, navItemsRef3]} mouseEnter={cursorAnims.linkMouseEnter} mouseLeave={cursorAnims.linkMouseLeave}></SideNav>
 			<div className={styles.landing}>
 				<nav>
 					<h1>STron</h1>
@@ -142,12 +111,12 @@ export default function Home() {
 						{portfolioData.projects.map((project, index) => {
 							return (
 								<div key={index} className={styles.project} id="project">
-									<div className={styles.left} onMouseEnter={() => projectMouseEnter(project.Image)} onMouseLeave={() => projectMouseLeave()}>
+									<div className={styles.left} onMouseEnter={() => cursorAnims.projectMouseEnter(project.Image)} onMouseLeave={() => cursorAnims.projectMouseLeave()}>
 										<h2>
 											<span>#{index + 1}</span> {project.title}
 										</h2>
 									</div>
-									<div className={styles.right} onMouseEnter={() => linkMouseEnter()} onMouseLeave={() => linkMouseLeave()}>
+									<div className={styles.right} onMouseEnter={() => cursorAnims.linkMouseEnter()} onMouseLeave={() => cursorAnims.linkMouseLeave()}>
 										<a href="#">
 											Visit <FaExternalLinkAlt />
 										</a>

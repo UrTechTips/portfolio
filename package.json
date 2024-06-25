@@ -1,31 +1,32 @@
 {
-  "name": "portfolio",
-  "version": "0.1.0",
-  "private": true,
-  "scripts": {
-    "dev": "next dev",
-    "build": "next build",
-    "start": "next start",
-    "lint": "next lint"
-  },
-  "dependencies": {
-    "@emailjs/browser": "^4.3.3",
-    "@gsap/react": "^2.1.1",
-    "@lottiefiles/dotlottie-react": "^0.6.4",
-    "gsap": "^3.12.5",
-    "next": "14.2.3",
-    "react": "^18",
-    "react-dom": "^18",
-    "react-icons": "^5.2.1",
-    "sass": "^1.77.4",
-    "split-type": "^0.3.4"
-  },
-  "devDependencies": {
-    "@types/node": "^20",
-    "@types/react": "^18",
-    "@types/react-dom": "^18",
-    "eslint": "^8",
-    "eslint-config-next": "14.2.3",
-    "typescript": "^5"
-  }
+	"name": "portfolio",
+	"version": "0.1.0",
+	"private": true,
+	"scripts": {
+		"dev": "next dev",
+		"build": "next build",
+		"start": "next start",
+		"lint": "next lint"
+	},
+	"dependencies": {
+		"@gsap/react": "^2.1.1",
+		"@lottiefiles/dotlottie-react": "^0.6.4",
+		"@types/nodemailer": "^6.4.15",
+		"gsap": "^3.12.5",
+		"next": "14.2.3",
+		"nodemailer": "^6.9.14",
+		"react": "^18",
+		"react-dom": "^18",
+		"react-icons": "^5.2.1",
+		"sass": "^1.77.4",
+		"split-type": "^0.3.4"
+	},
+	"devDependencies": {
+		"@types/node": "^20",
+		"@types/react": "^18",
+		"@types/react-dom": "^18",
+		"eslint": "^8",
+		"eslint-config-next": "14.2.3",
+		"typescript": "^5"
+	}
 }
