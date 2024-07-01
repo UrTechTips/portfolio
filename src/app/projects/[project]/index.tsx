@@ -1,5 +1,5 @@
 "use client";
-import { gsapContext } from "@/app/layout";
+
 import React, { useContext, useRef, useEffect } from "react";
 import styles from "./project.module.scss";
 import { IoMdArrowRoundBack } from "react-icons/io";
@@ -10,6 +10,7 @@ import Image from "next/image";
 import { gsap } from "gsap";
 import { ScrollToPlugin } from "gsap/ScrollToPlugin";
 import Slider from "@/components/slider/slider.component";
+import { gsapContext } from "@/app/context";
 
 gsap.registerPlugin(ScrollToPlugin);
 

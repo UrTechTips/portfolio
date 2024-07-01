@@ -9,13 +9,8 @@ import { Inter } from "next/font/google";
 import Head from "next/head";
 import React, { RefObject, createContext, useRef, useState } from "react";
 import "./globals.css";
+import { gsapContext } from "./context";
 
-interface LayoutContextType {
-	gsap: typeof gsap;
-	cursorRef: RefObject<HTMLDivElement>;
-}
-
-export const gsapContext = createContext<LayoutContextType>({ gsap: gsap, cursorRef: null as unknown as RefObject<HTMLDivElement> });
 gsap.registerPlugin(useGSAP, ScrollTrigger, ScrollToPlugin);
 
 const inter = Inter({ subsets: ["latin"] });

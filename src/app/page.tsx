@@ -6,10 +6,10 @@ import { useContext, useRef, useState } from "react";
 import { FaExternalLinkAlt, FaGithub, FaLinkedin } from "react-icons/fa";
 import SplitType from "split-type";
 import portfolioData from "../../public/portfolio.json";
-import { gsapContext } from "./layout";
 import styles from "./page.module.scss";
 import useCursorAnim from "@/hooks/useCursorAnimations";
 import { useRouter } from "next/navigation";
+import { gsapContext } from "./context";
 
 export default function Home() {
 	const router = useRouter();
