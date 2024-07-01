@@ -33,16 +33,16 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
 	const loading = useLoadAssets({ isLoading, setIsLoading, assets, onAssetsLoaded });
 
 	return (
-		<html lang="en">
-			<Head>
-				<title>STron - Portfolio</title>
-			</Head>
-			<body className={inter.className}>
-				<Cursor cursorRef={cursorRef} />
-				<gsapContext.Provider value={{ gsap: gsap, cursorRef: cursorRef }}>
+		<gsapContext.Provider value={{ gsap: gsap, cursorRef: cursorRef }}>
+			<html lang="en">
+				<Head>
+					<title>STron - Portfolio</title>
+				</Head>
+				<body className={inter.className}>
+					<Cursor cursorRef={cursorRef} />
 					<div>{children}</div>
-				</gsapContext.Provider>
-			</body>
-		</html>
+				</body>
+			</html>
+		</gsapContext.Provider>
 	);
 }

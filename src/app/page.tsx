@@ -77,6 +77,11 @@ export default function Home() {
 		router.push("https://google.com");
 	};
 
+	const handleProjectClick = (name: string) => {
+		cursorAnims.projectMouseLeave();
+		router.push(`\\projects\\${name}`);
+	};
+
 	return (
 		<>
 			<SideNav navRefs={[navItemsRef1, navItemsRef2, navItemsRef3]} mouseEnter={cursorAnims.linkMouseEnter} mouseLeave={cursorAnims.linkMouseLeave}></SideNav>
@@ -117,15 +122,19 @@ export default function Home() {
 						{portfolioData.projects.map((project, index) => {
 							return (
 								<div key={index} className={styles.project} id="project">
-									<div className={styles.left} onMouseEnter={() => cursorAnims.projectMouseEnter(project.Image)} onMouseLeave={() => cursorAnims.projectMouseLeave()}>
+									<div className={styles.left} onClick={() => handleProjectClick(project.title)} onMouseEnter={() => cursorAnims.projectMouseEnter(project.Image)} onMouseLeave={() => cursorAnims.projectMouseLeave()}>
 										<h2>
 											<span>#{index + 1}</span> {project.title}
 										</h2>
 									</div>
-									<div className={styles.right} onMouseEnter={() => cursorAnims.linkMouseEnter()} onMouseLeave={() => cursorAnims.linkMouseLeave()}>
-										<a href="#">
-											Visit <FaExternalLinkAlt />
-										</a>
+									<div className={styles.right}>
+										{project.link != "DNE" ? (
+											<a href={project.link} target="_blank" onMouseEnter={() => cursorAnims.linkMouseEnter()} onMouseLeave={() => cursorAnims.linkMouseLeave()}>
+												Visit <FaExternalLinkAlt />
+											</a>
+										) : (
+											<a>In Progress</a>
+										)}
 									</div>
 								</div>
 							);

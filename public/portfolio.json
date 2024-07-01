@@ -4,18 +4,42 @@
 	"projects": [
 		{
 			"title": "Portfolio",
-			"description": "Multiplayer TicTacToe Game with AI Builtin to enjoy playing solo.",
-			"Image": "/images/portfolio.png"
+			"description": "The 'Portfolio' project is a personal showcase of my skills and projects, designed to leave a lasting impression on visitors. Developed using Next.js and SCSS, it combines sleek, modern aesthetics with smooth functionality. The site features an interactive UI, highlighting my expertise in both front-end and back-end development. With a responsive design, it ensures an optimal viewing experience on all devices. This project demonstrates my ability to create professional, user-friendly web applications and serves as a testament to my dedication to quality and innovation in web development.",
+			"Image": "/images/portfolio.png",
+			"link": "https://portfolio-nine-nu-79.vercel.app/",
+			"overview": {
+				"start": "June, 2024",
+				"end": "June, 2024",
+				"duration": "1 Month"
+			},
+			"technologies": ["/technologies/nextjs.png", "/technologies/sass.png", "/technologies/gsap.png"],
+			"gallery": ["/images/portfolio.png", "/images/portfolio/2.png", "/images/portfolio/3.png"]
 		},
 		{
 			"title": "TicTacToe",
-			"description": "Multiplayer TicTacToe Game with AI Builtin to enjoy playing solo.",
-			"Image": "/images/tictactoe-web.png"
+			"description": "The 'TicTacToe Web' project is an interactive game where you can challenge your friends or an AI opponent to a classic match of TicTacToe. Built with Next.js, SCSS, and a touch of Node.js, this project combines modern design with seamless functionality. I implemented AI algorithms to create a challenging and dynamic gameplay experience, making each match unpredictable and exciting. The responsive design ensures the game looks and plays great on any device. This project not only boosts user engagement but also showcases how AI can be effectively integrated into simple web games.",
+			"Image": "/images/tictactoe-web.png",
+			"link": "https://tictactoe-web-phi.vercel.app/",
+			"overview": {
+				"start": "August, 2023",
+				"end": "September, 2023",
+				"duration": "1 Month"
+			},
+			"technologies": ["/technologies/nextjs.png", "/technologies/sass.png", "/technologies/nodejs.png"],
+			"gallery": ["/images/tictactoe-web.png", "/images/tictactoe/2.png", "/images/tictactoe/3.png", "/images/tictactoe/4.png"]
 		},
 		{
-			"title": "FitTrack",
+			"title": "Fittrack",
 			"description": "FitTrack Website",
-			"Image": "https://media.wired.com/photos/5a5550257c03c23a9897a1aa/16:9/w_1984,h_1116,c_limit/Google_G_Logo-2-f.png"
+			"Image": "https://media.wired.com/photos/5a5550257c03c23a9897a1aa/16:9/w_1984,h_1116,c_limit/Google_G_Logo-2-f.png",
+			"link": "DNE",
+			"overview": {
+				"start": "January, 2024",
+				"end": "Ongoing",
+				"duration": null
+			},
+			"technologies": ["/technologies/nextjs.png", "/technologies/sass.png", "/technologies/nodejs.png", "/technologies/firebase.png"],
+			"gallery": []
 		}
 	]
 }
