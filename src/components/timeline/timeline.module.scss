@@ -1,0 +1,126 @@
+.timeline {
+	position: relative;
+	max-width: 1200px;
+	width: 100%;
+	margin: 0 auto;
+	font-family: "Poppins", sans-serif;
+
+	&::after {
+		content: "";
+		position: absolute;
+		width: 6px;
+		// height: 100%;
+		height: var(--timeline-height, 0%);
+		background: #000;
+		top: 0;
+		left: 50%;
+		margin-left: -3px;
+		transition: height 0.3s ease;
+		z-index: 0;
+	}
+}
+
+.container {
+	padding: 10px 50px;
+	position: relative;
+	width: 50%;
+	z-index: 2;
+
+	img {
+		position: absolute;
+		width: 40px;
+		border-radius: 50%;
+		right: -20px;
+		top: 32px;
+		z-index: 100;
+	}
+}
+
+.textBox {
+	padding: 20px 30px;
+	background: #fff;
+	position: relative;
+	border-radius: 6px;
+	font-size: 16px;
+	z-index: 2;
+
+	h2 {
+		font-weight: 600;
+	}
+	small {
+		display: inline-block;
+		margin-bottom: 15px;
+	}
+}
+
+.left {
+	left: 0;
+}
+.right {
+	left: 50%;
+
+	img {
+		left: -20px;
+	}
+}
+
+.leftContainerArrow {
+	height: 0;
+	width: 0;
+	position: absolute;
+	top: 28px;
+	z-index: 1;
+	border-top: 15px solid transparent;
+	border-bottom: 15px solid transparent;
+	border-left: 15px solid #fff;
+	right: -14px;
+}
+
+.rightContainerArrow {
+	height: 0;
+	width: 0;
+	position: absolute;
+	top: 28px;
+	z-index: 1;
+	border-top: 15px solid transparent;
+	border-bottom: 15px solid transparent;
+	border-right: 15px solid #fff;
+	left: -14px;
+}
+
+@media screen and (max-width: 600px) {
+	.timeline {
+		margin: 50px auto;
+	}
+	.timeline::after {
+		left: 31px;
+	}
+	.container {
+		width: 100%;
+		padding-left: 88px;
+		padding-right: 25px;
+	}
+	.textBox {
+		font-size: 13px;
+
+		small {
+			margin-bottom: 10px;
+		}
+	}
+
+	.right {
+		left: 0;
+	}
+
+	.left img,
+	.right img {
+		left: 10px;
+	}
+
+	.leftContainerArrow,
+	.rightContainerArrow {
+		border-right: 15px solid #fff;
+		border-left: 0;
+		left: -14px;
+	}
+}

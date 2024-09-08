@@ -33,7 +33,6 @@ const ProjectComponent = ({ title }: { title: string }) => {
 
 	const scrollToSection = (ref: React.RefObject<HTMLDivElement>) => {
 		if (ref.current && backgroundRef) {
-			console.log("EHERE");
 			gsap.to(backgroundRef.current, { duration: 1, scrollTo: ref.current, ease: "power2.inOut" });
 		}
 	};

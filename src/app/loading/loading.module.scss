@@ -1,0 +1,39 @@
+.loading {
+	width: 100%;
+	height: 100vh;
+
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	background-color: rgb(217, 217, 217);
+
+	.container {
+		position: relative;
+		width: 4rem;
+		height: 2rem;
+		text-align: center;
+	}
+	span {
+		font-size: 4rem;
+		position: relative;
+		top: 100%;
+		left: calc(4rem * var(--nth));
+		left: 0;
+	}
+}
+
+.animUp {
+	animation: up 1s ease-in-out;
+}
+
+@keyframes up {
+	from {
+		top: 0;
+	}
+	to {
+		top: 100%;
+	}
+}
+.animDown {
+	color: blue;
+}

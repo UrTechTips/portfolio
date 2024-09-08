@@ -11,7 +11,7 @@ const SideNav: FC<SideNavProps> = ({ navRefs, mouseEnter, mouseLeave }) => {
 	return (
 		<>
 			<div className={styles.sideNav} style={{ overflowX: "hidden" }}>
-				<a className={`${styles.navItems} ${styles.link}`} href="#About" ref={navRefs ? navRefs[0] : null} onMouseEnter={mouseEnter} onMouseLeave={mouseLeave}>
+				<a className={`${styles.navItems} ${styles.link}`} href="/about" ref={navRefs ? navRefs[0] : null} onMouseEnter={mouseEnter} onMouseLeave={mouseLeave}>
 					About
 				</a>
 				<a className={`${styles.navItems} ${styles.link}`} href="#Projects" ref={navRefs ? navRefs[1] : null} onMouseEnter={mouseEnter} onMouseLeave={mouseLeave}>

@@ -1,5 +1,6 @@
 {
 	"about": "Hello! I'm Sai Sreenadh, known professionally as STron, a student based in India. I specialize in UI design and full stack development, particularly with Next.js and Figma. I hold a B.Tech degree and am passionate about creating user-friendly interfaces and robust web applications.\nWhen I'm not coding, I enjoy playing video games and reading books. My goal is to achieve success in the tech industry by continuously learning and innovating.",
+	"picture": "https://learn-lab.vercel.app/images/Sreenadh.jpg",
 	"bento": ["0 Year Experience", "0 Successfull Clients", "2 Completed Projects", "Don't know something"],
 	"projects": [
 		{
@@ -40,6 +41,13 @@
 			},
 			"technologies": ["/technologies/nextjs.png", "/technologies/sass.png", "/technologies/nodejs.png", "/technologies/firebase.png"],
 			"gallery": []
+		}
+	],
+	"timeline": [
+		{
+			"title": "Vellore Inistitute of Technology, Andhra Pradesh",
+			"content": "The 'Portfolio' project is a personal showcase of my skills and projects, designed to leave a lasting impression on visitors. Developed using Next.js and SCSS, it combines sleek, modern aesthetics with smooth functionality. The site features an interactive UI, highlighting my expertise in both front-end and back-end development. With a responsive design, it ensures an optimal viewing experience on all devices. This project demonstrates my ability to create professional, user-friendly web applications and serves as a testament to my dedication to quality and innovation in web development.",
+			"duration": "2023 - 2027"
 		}
 	]
 }

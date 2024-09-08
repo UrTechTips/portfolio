@@ -1,6 +1,5 @@
 "use client";
 import Cursor from "@/components/cursor/cursor.component";
-import useLoadAssets from "@/hooks/useLoadAssets";
 import { useGSAP } from "@gsap/react";
 import gsap from "gsap";
 import { ScrollToPlugin } from "gsap/ScrollToPlugin";
@@ -19,13 +18,8 @@ const assets = ["/next.svg", "/ScrollDownAnimation.json", "/vercel.svg"];
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
 	const [isLoading, setIsLoading] = useState(true);
+	const [loadedCount, setLoadedCount] = useState(0);
 	const cursorRef = useRef<HTMLDivElement>(null);
-
-	const onAssetsLoaded = () => {
-		console.log("Hello");
-	};
-
-	const loading = useLoadAssets({ isLoading, setIsLoading, assets, onAssetsLoaded });
 
 	return (
 		<gsapContext.Provider value={{ gsap: gsap, cursorRef: cursorRef }}>
