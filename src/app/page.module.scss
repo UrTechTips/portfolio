@@ -269,6 +269,15 @@
 			display: flex;
 			justify-content: space-between;
 			margin-bottom: 1.5rem;
+			transition: all ease-in-out 400ms;
+
+			&:hover {
+				background-color: #fff;
+				color: #000;
+				a {
+					color: #000;
+				}
+			}
 
 			border: {
 				top: 1px solid #fff;

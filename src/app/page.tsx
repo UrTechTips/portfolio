@@ -17,9 +17,12 @@ export default function Home() {
 	const navItemsRef1 = useRef<HTMLAnchorElement>(null);
 	const navItemsRef2 = useRef<HTMLAnchorElement>(null);
 	const navItemsRef3 = useRef<HTMLAnchorElement>(null);
+	const buttonRef = useRef<HTMLInputElement>(null);
 	const gsap = useContext(gsapContext).gsap;
 	const cursorRef = useContext(gsapContext).cursorRef;
-	const cursorAnims = useCursorAnim(cursorRef);
+	const isCursorStuck = useContext(gsapContext).isCursorStuck;
+	const setIsCursorStuck = useContext(gsapContext).setIsCursorStuck;
+	const cursorAnims = useCursorAnim(cursorRef, setIsCursorStuck);
 
 	const [name, setName] = useState("");
 	const [email, setEmail] = useState("");
@@ -79,7 +82,7 @@ export default function Home() {
 
 	const handleProjectClick = (name: string) => {
 		cursorAnims.projectMouseLeave();
-		router.push(`\\projects\\${name}`);
+		router.push(`\\projects\\${name.toLowerCase()}`);
 	};
 
 	return (
@@ -122,7 +125,7 @@ export default function Home() {
 						{portfolioData.projects.map((project, index) => {
 							return (
 								<div key={index} className={styles.project} id="project">
-									<div className={styles.left} onClick={() => handleProjectClick(project.title)} onMouseEnter={() => cursorAnims.projectMouseEnter(project.Image)} onMouseLeave={() => cursorAnims.projectMouseLeave()}>
+									<div className={styles.left} onClick={() => handleProjectClick(project.title)} onMouseEnter={() => cursorAnims.projectMouseEnter(project.image)} onMouseLeave={() => cursorAnims.projectMouseLeave()}>
 										<h2>
 											<span>#{index + 1}</span> {project.title}
 										</h2>
@@ -157,7 +160,7 @@ export default function Home() {
 								<input id="Email" type="text" required placeholder="Email" value={email} onChange={(e) => setEmail(e.target.value)} />
 							</div>
 							<textarea className={styles.messageInput} id="Message" required placeholder="Message" rows={5} value={message} onChange={(e) => setMessage(e.target.value)} />
-							<input type="button" value="Send" onClick={(e) => submitContact(e)} onMouseEnter={cursorAnims.linkMouseEnter} onMouseLeave={cursorAnims.linkMouseLeave} />
+							<input type="button" value="Send" ref={buttonRef} onClick={(e) => submitContact(e)} onMouseEnter={() => cursorAnims.buttonMouseEnter(buttonRef)} onMouseLeave={() => cursorAnims.buttonMouseLeave()} />
 						</div>
 					</div>
 				</div>

@@ -12,6 +12,17 @@ import { ScrollToPlugin } from "gsap/ScrollToPlugin";
 import Slider from "@/components/slider/slider.component";
 import { gsapContext } from "@/app/context";
 
+interface TechnologiesTools {
+	Frontend: string;
+	Backend: string;
+	"Real-Time Database & Authentication": string;
+	"Artificial Intelligence": string;
+}
+
+interface Project {
+	technologies_tools: TechnologiesTools;
+}
+
 gsap.registerPlugin(ScrollToPlugin);
 
 const findByTitle = (title: string, projects: typeof portfolioData.projects) => {
@@ -48,11 +59,14 @@ const ProjectComponent = ({ title }: { title: string }) => {
 			</div>
 			<div className={styles.body}>
 				<div className={styles.navigation}>
-					<h1>Navigation</h1>
 					<h2 onClick={() => scrollToSection(descriptionRef)}>Description</h2>
-					<h2 onClick={() => scrollToSection(overviewRef)}>Overview</h2>
-					<h2 onClick={() => scrollToSection(technologiesRef)}>Technologies</h2>
-					<h2 onClick={() => scrollToSection(galleryRef)}>Gallery</h2>
+					<h2 onClick={() => scrollToSection(overviewRef)}>Problem</h2>
+					<h2 onClick={() => scrollToSection(technologiesRef)}>Approach</h2>
+					<h2 onClick={() => scrollToSection(galleryRef)}>Technologies And Tools</h2>
+					<h2 onClick={() => scrollToSection(galleryRef)}>Challenges and Solutions</h2>
+					<h2 onClick={() => scrollToSection(galleryRef)}>Outcome and Impacts</h2>
+					<h2 onClick={() => scrollToSection(galleryRef)}>Future Improvements</h2>
+					<h2 onClick={() => scrollToSection(galleryRef)}>Key Takeaways</h2>
 				</div>
 				<div className={styles.main}>
 					<div className={styles.header}>
@@ -65,8 +79,92 @@ const ProjectComponent = ({ title }: { title: string }) => {
 							</a>
 						</h4>
 					</div>
-					<p className={styles.description}>{project?.description}</p>
-					<div className={styles.overview} ref={overviewRef}>
+					<p className={styles.description}>{project?.description.lines}</p>
+					{/* Case Study Start */}
+					<div className={styles.section}>
+						<h2 className={styles.sectionHead}>Problem</h2>
+
+						<div className={styles.sectionDesc}>
+							{project?.problem.lines.map((line, index) => (
+								<p key={index} className={styles.sectionLine}>
+									{line}
+								</p>
+							))}
+						</div>
+					</div>
+					<div className={styles.section}>
+						<h2 className={styles.sectionHead}>Approach</h2>
+
+						<div className={styles.sectionDesc}>
+							{project?.approach.lines.map((line, index) => (
+								<p key={index} className={styles.sectionLine}>
+									{line}
+								</p>
+							))}
+						</div>
+					</div>
+					<div className={styles.section}>
+						<h2 className={styles.sectionHead}>Technologies And Tools</h2>
+
+						<div className={styles.sectionDesc}>
+							{Object.keys(project?.technologies_tools as TechnologiesTools).map((key, _index) => (
+								<div className={styles.keyVal} key={_index}>
+									<h3>{key}:</h3>
+									<h4>{project?.technologies_tools[key as keyof TechnologiesTools]}</h4> {/* Use keyof to assert key type */}
+								</div>
+							))}
+						</div>
+					</div>
+					<div className={styles.section}>
+						<h2 className={styles.sectionHead}>Challenges and Solutions</h2>
+
+						<div className={styles.sectionDesc}>
+							{project?.challenges.lines.map((line, index) => (
+								<p key={index} className={styles.sectionLine}>
+									{line}
+								</p>
+							))}
+						</div>
+					</div>
+					<div className={styles.section}>
+						<h2 className={styles.sectionHead}>Outcome and Impact</h2>
+
+						<div className={styles.sectionDesc}>
+							{project?.outcome.lines.map((line, index) => (
+								<p key={index} className={styles.sectionLine}>
+									{line}
+								</p>
+							))}
+						</div>
+					</div>
+					<div className={styles.section}>
+						<h2 className={styles.sectionHead}>Future Improvements</h2>
+
+						<div className={styles.sectionDesc}>
+							{project?.future_improvements.lines.map((line, index) => (
+								<p key={index} className={styles.sectionLine}>
+									{line}
+								</p>
+							))}
+							{project?.future_improvements.bullet_points.map((line, index) => (
+								<p key={index} className={styles.sectionPoint}>
+									&gt; {line}
+								</p>
+							))}
+						</div>
+					</div>
+					<div className={styles.section}>
+						<h2 className={styles.sectionHead}>Key Takeaways</h2>
+
+						<div className={styles.sectionDesc}>
+							{project?.key_takeaways.lines.map((line, index) => (
+								<p key={index} className={styles.sectionLine}>
+									{line}
+								</p>
+							))}
+						</div>
+					</div>
+					{/* <div className={styles.overview} ref={overviewRef}>
 						<h1>Overview of the Project</h1>
 						<div>
 							<h2>Start Date</h2>
@@ -80,20 +178,19 @@ const ProjectComponent = ({ title }: { title: string }) => {
 							<h2>Duration Date</h2>
 							<h3>{project?.overview.duration}</h3>
 						</div>
-					</div>
-					<div className={styles.tech} ref={technologiesRef}>
+					</div> */}
+					{/* <div className={styles.tech} ref={technologiesRef}>
 						<h1>Technologies Used</h1>
-						{/* <Slider list={project?.technologies!} options={{ grayscale: true, pause: true, reverse: true }} /> */}
 						<div>
-							{project?.technologies.map((tech, index) => (
+							{project?.technologies.lines.map((tech, index) => (
 								<Image className={styles.techImg} alt={tech} key={index} src={tech} width={300} height={200} />
 							))}
 						</div>
 					</div>
 					<div className={styles.gallery} ref={galleryRef}>
 						<h1>Gallery</h1>
-						<Slider className={styles.slide} list={project?.gallery!} options={{ grayscale: true, pause: true, reverse: false }} />
-					</div>
+						<Slider className={styles.slide} list={project?.gallery.lines!} options={{ grayscale: true, pause: true, reverse: false }} />
+					</div> */}
 				</div>
 			</div>
 		</div>

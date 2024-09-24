@@ -10,25 +10,24 @@ import React, { RefObject, createContext, useRef, useState } from "react";
 import "./globals.css";
 import { gsapContext } from "./context";
 
-gsap.registerPlugin(useGSAP, ScrollTrigger, ScrollToPlugin);
-
 const inter = Inter({ subsets: ["latin"] });
 
 const assets = ["/next.svg", "/ScrollDownAnimation.json", "/vercel.svg"];
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
 	const [isLoading, setIsLoading] = useState(true);
+	const [isCursorStuck, setIsCursorStuck] = useState(false);
 	const [loadedCount, setLoadedCount] = useState(0);
 	const cursorRef = useRef<HTMLDivElement>(null);
 
 	return (
-		<gsapContext.Provider value={{ gsap: gsap, cursorRef: cursorRef }}>
+		<gsapContext.Provider value={{ gsap: gsap, cursorRef: cursorRef, isCursorStuck: isCursorStuck, setIsCursorStuck: setIsCursorStuck }}>
 			<html lang="en">
 				<Head>
 					<title>STron - Portfolio</title>
 				</Head>
 				<body className={inter.className}>
-					<Cursor cursorRef={cursorRef} />
+					<Cursor cursorRef={cursorRef} isCursorStuck={isCursorStuck} />
 					<div>{children}</div>
 				</body>
 			</html>

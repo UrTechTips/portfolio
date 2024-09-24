@@ -1,38 +1,30 @@
-import { FC, RefObject, useEffect, useRef, useCallback } from "react";
+import { FC, RefObject, useEffect, useRef, useCallback, useState } from "react";
 import styles from "./cursor.module.scss";
+import useCursorAnimations from "@/hooks/useCursorAnimations";
 
 interface CursorProps {
 	cursorRef: RefObject<HTMLDivElement>;
+	isCursorStuck: boolean;
 }
 
-const Cursor: FC<CursorProps> = ({ cursorRef }) => {
+const Cursor: FC<CursorProps> = ({ cursorRef, isCursorStuck }) => {
+	const cursorAnims = useCursorAnimations(cursorRef);
 	const requestRef = useRef<number | null>(null);
 
-	const cursorMove = useCallback(
-		(e: MouseEvent) => {
-			const updatePosition = () => {
-				if (cursorRef.current) {
-					cursorRef.current.style.left = `${e.pageX}px`;
-					cursorRef.current.style.top = `${e.pageY}px`;
-				}
-			};
-			if (requestRef.current) {
-				cancelAnimationFrame(requestRef.current);
-			}
-			requestRef.current = requestAnimationFrame(updatePosition);
-		},
-		[cursorRef]
-	);
-
+	const cursorMove = useCallback((e: MouseEvent) => cursorAnims.cursorMove(e, requestRef), [cursorRef]);
 	useEffect(() => {
-		document.addEventListener("mousemove", cursorMove);
+		if (!isCursorStuck) {
+			document.addEventListener("mousemove", cursorMove);
+		} else {
+			document.removeEventListener("mousemove", cursorMove);
+		}
 		return () => {
 			document.removeEventListener("mousemove", cursorMove);
 			if (requestRef.current) {
 				cancelAnimationFrame(requestRef.current);
 			}
 		};
-	}, [cursorMove]);
+	}, [cursorMove, isCursorStuck]);
 
 	return (
 		<div className={styles.cursor} ref={cursorRef}>
