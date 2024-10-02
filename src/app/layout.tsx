@@ -24,7 +24,19 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
 		<gsapContext.Provider value={{ gsap: gsap, cursorRef: cursorRef, isCursorStuck: isCursorStuck, setIsCursorStuck: setIsCursorStuck }}>
 			<html lang="en">
 				<Head>
-					<title>STron - Portfolio</title>
+					<Head>
+						<title>STron - Portfolio</title>
+						<meta name="description" content="STron's Portfolio showcasing amazing projects and web development skills." />
+						<meta name="keywords" content="portfolio, web developer, STron, projects, GSAP, animations, web design" />
+						<meta property="og:title" content="STron - Portfolio" />
+						<meta property="og:description" content="Check out STron's latest projects and web development work." />
+						<meta property="og:image" content="/images/portfolio.png" />
+						<meta property="og:url" content="https://portfolio-nine-nu-79.vercel.app/" />
+						<meta name="twitter:card" content="summary_large_image" />
+						<meta name="twitter:title" content="STron - Portfolio" />
+						<meta name="twitter:description" content="STron's Portfolio showcasing amazing projects and web development skills." />
+						<meta name="twitter:image" content="/images/portfolio.png" />
+					</Head>
 				</Head>
 				<body className={inter.className}>
 					<Cursor cursorRef={cursorRef} isCursorStuck={isCursorStuck} />

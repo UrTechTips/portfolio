@@ -10,6 +10,7 @@ import styles from "./page.module.scss";
 import useCursorAnim from "@/hooks/useCursorAnimations";
 import { useRouter } from "next/navigation";
 import { gsapContext } from "./context";
+import Link from "next/link";
 
 export default function Home() {
 	const router = useRouter();
@@ -21,8 +22,7 @@ export default function Home() {
 	const gsap = useContext(gsapContext).gsap;
 	const cursorRef = useContext(gsapContext).cursorRef;
 	const isCursorStuck = useContext(gsapContext).isCursorStuck;
-	const setIsCursorStuck = useContext(gsapContext).setIsCursorStuck;
-	const cursorAnims = useCursorAnim(cursorRef, setIsCursorStuck);
+	const cursorAnims = useCursorAnim(cursorRef);
 
 	const [name, setName] = useState("");
 	const [email, setEmail] = useState("");
@@ -74,10 +74,6 @@ export default function Home() {
 		} else {
 			alert(data.error);
 		}
-	};
-
-	const handleSocialClick = () => {
-		router.push("https://google.com");
 	};
 
 	const handleProjectClick = (name: string) => {
@@ -150,8 +146,12 @@ export default function Home() {
 							<h1>Want to make a project together?</h1>
 							<h3>Rech out to me.</h3>
 							<div className={styles.icons}>
-								<FaGithub onClick={handleSocialClick} onMouseEnter={cursorAnims.linkMouseEnter} onMouseLeave={cursorAnims.linkMouseLeave} />
-								<FaLinkedin onClick={handleSocialClick} onMouseEnter={cursorAnims.linkMouseEnter} onMouseLeave={cursorAnims.linkMouseLeave} />
+								<Link href={portfolioData.github} target="_blank">
+									<FaGithub onMouseEnter={cursorAnims.linkMouseEnter} onMouseLeave={cursorAnims.linkMouseLeave} />
+								</Link>
+								<Link href={portfolioData.linkedin} target="_blank">
+									<FaLinkedin onMouseEnter={cursorAnims.linkMouseEnter} onMouseLeave={cursorAnims.linkMouseLeave} />
+								</Link>
 							</div>
 						</div>
 						<div className={styles.right}>
@@ -160,7 +160,7 @@ export default function Home() {
 								<input id="Email" type="text" required placeholder="Email" value={email} onChange={(e) => setEmail(e.target.value)} />
 							</div>
 							<textarea className={styles.messageInput} id="Message" required placeholder="Message" rows={5} value={message} onChange={(e) => setMessage(e.target.value)} />
-							<input type="button" value="Send" ref={buttonRef} onClick={(e) => submitContact(e)} onMouseEnter={() => cursorAnims.buttonMouseEnter(buttonRef)} onMouseLeave={() => cursorAnims.buttonMouseLeave()} />
+							<input id="btn-rect" type="button" value="Send" ref={buttonRef} onClick={(e) => submitContact(e)} />
 						</div>
 					</div>
 				</div>

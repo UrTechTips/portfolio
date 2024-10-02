@@ -1,7 +1,9 @@
-import { Dispatch, MutableRefObject, RefObject, SetStateAction, useState } from "react";
+import { gsapContext } from "@/app/context";
+import { Dispatch, MutableRefObject, RefObject, SetStateAction, useContext, useState } from "react";
 
-const useCursorAnimations = (cursorRef: RefObject<HTMLDivElement>, setCursorStuck: Dispatch<SetStateAction<boolean>> | null = null) => {
+const useCursorAnimations = (cursorRef: RefObject<HTMLDivElement>) => {
 	const [isCursorStuck, setIsCursorStuck] = useState(false);
+	const setCursorStuck = useContext(gsapContext).setIsCursorStuck;
 
 	const cursorMove = (e: MouseEvent, requestRef: MutableRefObject<number | null>) => {
 		if (!isCursorStuck) {
@@ -16,8 +18,6 @@ const useCursorAnimations = (cursorRef: RefObject<HTMLDivElement>, setCursorStuc
 				cancelAnimationFrame(requestRef.current);
 			}
 			requestRef.current = requestAnimationFrame(updatePosition);
-		} else {
-			alert("Stuck");
 		}
 	};
 
@@ -59,15 +59,20 @@ const useCursorAnimations = (cursorRef: RefObject<HTMLDivElement>, setCursorStuc
 		}
 	};
 
-	const buttonMouseEnter = (buttonRef: RefObject<HTMLInputElement>) => {
-		if (cursorRef.current && buttonRef.current) {
-			const buttonRect = buttonRef.current.getBoundingClientRect();
-			const buttonWidth = buttonRef.current.offsetWidth;
-			const buttonHeight = buttonRef.current.offsetHeight + 1;
+	const buttonMouseEnter = async (buttonRef: Element) => {
+		if (cursorRef.current && buttonRef) {
+			setIsCursorStuck(true);
+			if (setCursorStuck) {
+				setCursorStuck(true);
+			}
 
+			const buttonRect = buttonRef.getBoundingClientRect();
+			const buttonWidth = buttonRef.clientWidth;
+			const buttonHeight = buttonRef.clientHeight + 1;
 			const scrolledTop = buttonRect.top + window.scrollY;
 
 			const styles: React.CSSProperties = {
+				position: "absolute",
 				width: `${buttonWidth}px`,
 				height: `${buttonHeight}px`,
 				top: `${scrolledTop}px`,
@@ -79,16 +84,12 @@ const useCursorAnimations = (cursorRef: RefObject<HTMLDivElement>, setCursorStuc
 				outlineOffset: "5px",
 			};
 
+			// Apply these styles and ensure the cursor stays there
 			Object.assign(cursorRef.current.style, styles);
-
-			setIsCursorStuck(true);
-			if (setCursorStuck) {
-				setCursorStuck(true);
-			}
 		}
 	};
 
-	const buttonMouseLeave = () => {
+	const reset = () => {
 		if (cursorRef.current) {
 			const cursorStyles: React.CSSProperties = {
 				zIndex: 99999999999,
@@ -117,19 +118,19 @@ const useCursorAnimations = (cursorRef: RefObject<HTMLDivElement>, setCursorStuc
 		}
 	};
 
-	const specialTextEntry = (e: EventTarget & HTMLSpanElement) => {
+	const specialTextEntry = (e: Element) => {
 		if (cursorRef.current && e) {
 			const buttonRect = e.getBoundingClientRect();
-			const buttonWidth = e.offsetWidth;
-			const buttonHeight = e.offsetHeight + 1;
+			const buttonWidth = buttonRect.width;
+			const buttonHeight = buttonRect.height + 1;
 
 			const scrolledTop = buttonRect.top + window.scrollY;
 
 			const styles: React.CSSProperties = {
-				width: `${buttonWidth}px`,
+				width: `calc(${buttonWidth}px + 0.4rem)`,
 				height: `${buttonHeight}px`,
 				top: `${scrolledTop}px`,
-				left: `${buttonRect.left}px`,
+				left: `calc(${buttonRect.left}px - 0.2rem)`,
 				borderRadius: "0%",
 				transform: "translate(0, 0)",
 				// background: "transparent",
@@ -144,7 +145,7 @@ const useCursorAnimations = (cursorRef: RefObject<HTMLDivElement>, setCursorStuc
 		}
 	};
 
-	return { linkMouseEnter, linkMouseLeave, projectMouseEnter, projectMouseLeave, buttonMouseEnter, buttonMouseLeave, cursorMove, isCursorStuck, specialTextEntry };
+	return { isCursorStuck, linkMouseEnter, linkMouseLeave, projectMouseEnter, projectMouseLeave, buttonMouseEnter, reset, cursorMove, specialTextEntry };
 };
 
 export default useCursorAnimations;

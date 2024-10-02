@@ -117,7 +117,9 @@ const TicTacToe = () => {
 							</a>
 						</h4>
 					</div>
-					<p className={styles.description}>The &#39;TicTacToe Web&#39; project is an interactive game where you can challenge your friends or an AI opponent to a classic match of TicTacToe. Built with Next.js, SCSS, and a touch of Node.js, this project combines modern design with seamless functionality. I implemented AI algorithms to create a challenging and dynamic gameplay experience, making each match unpredictable and exciting. The responsive design ensures the game looks and plays great on any device. This project not only boosts user engagement but also showcases how AI can be effectively integrated into simple web games.</p>
+					<p className={styles.description}>
+						The <span id="span-highlight">&#39;TicTacToe Web&#39;</span> project is an interactive game where you can challenge your friends or an AI opponent to a classic match of TicTacToe. Built with Next.js, SCSS, and a touch of Node.js, this project combines modern design with seamless functionality. I implemented AI algorithms to create a challenging and dynamic gameplay experience, making each match unpredictable and exciting. The responsive design ensures the game looks and plays great on any device. This project not only boosts user engagement but also showcases how AI can be effectively integrated into simple web games.
+					</p>
 					<div className={styles.section} ref={problemRef}>
 						<h2 className={styles.sectionHead}>Problem</h2>
 
