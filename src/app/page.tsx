@@ -90,7 +90,8 @@ export default function Home() {
 				</nav>
 				<div className={styles.hero}>
 					<h1 className={styles.heroText} ref={heroTextsRef}>
-						I am Sai Sreenadh. A Full-Stack Developer.
+						I am Sai Sreenadh.
+						<br /> A Full-Stack <br /> Developer.
 					</h1>
 				</div>
 
@@ -103,7 +104,7 @@ export default function Home() {
 				<div className={styles.about} id="About">
 					<div className={styles.mainSection}>
 						<h1>About</h1>
-						<p style={{ whiteSpace: "pre-line" }}>{portfolioData.about}</p>
+						<p style={{ whiteSpace: "pre-line", lineHeight: "1.9rem" }}>{portfolioData.about}</p>
 					</div>
 					<div className={styles.bento}>
 						{portfolioData.bento.map((bento, index) => {

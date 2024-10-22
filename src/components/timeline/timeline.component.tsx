@@ -6,6 +6,7 @@ interface TimelineItem {
 	duration: string;
 	title: string;
 	content: string;
+	image: string;
 }
 
 interface TimelineProps {
@@ -54,7 +55,7 @@ const Timeline: React.FC<TimelineProps> = ({ items }) => {
 		<div ref={timelineRef} className={styles.timeline}>
 			{items.map((item, index) => (
 				<div key={index} className={`${styles.container} ${index % 2 === 0 ? styles.left : styles.right}`}>
-					<img src="/images/amazon.png" alt="Amazon" />
+					<img src={item.image} alt="Amazon" />
 					<div className={styles.textBox}>
 						<h2>{item.title}</h2>
 						<small>{item.duration}</small>

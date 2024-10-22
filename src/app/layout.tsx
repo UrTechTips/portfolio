@@ -36,6 +36,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
 						<meta name="twitter:title" content="STron - Portfolio" />
 						<meta name="twitter:description" content="STron's Portfolio showcasing amazing projects and web development skills." />
 						<meta name="twitter:image" content="/images/portfolio.png" />
+						<link rel="icon" href="icon.ico" type="image/ico" sizes="32x32" />
 					</Head>
 				</Head>
 				<body className={inter.className}>

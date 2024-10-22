@@ -1,6 +1,7 @@
 import { FC, RefObject, useEffect, useRef, useCallback, useState } from "react";
 import styles from "./cursor.module.scss";
 import useCursorAnimations from "@/hooks/useCursorAnimations";
+import { usePathname } from "next/navigation";
 
 interface CursorProps {
 	cursorRef: RefObject<HTMLDivElement>;
@@ -10,6 +11,7 @@ interface CursorProps {
 const Cursor: FC<CursorProps> = ({ cursorRef, isCursorStuck }) => {
 	const cursorAnims = useCursorAnimations(cursorRef);
 	const requestRef = useRef<number | null>(null);
+	const pathname = usePathname();
 
 	const cursorMove = useCallback((e: MouseEvent) => cursorAnims.cursorMove(e, requestRef), [cursorRef]);
 	useEffect(() => {
@@ -61,7 +63,7 @@ const Cursor: FC<CursorProps> = ({ cursorRef, isCursorStuck }) => {
 				cancelAnimationFrame(requestRef.current);
 			}
 		};
-	}, [cursorMove, isCursorStuck]);
+	}, [cursorMove, isCursorStuck, pathname]);
 
 	return (
 		<div className={styles.cursor} ref={cursorRef}>

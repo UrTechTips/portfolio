@@ -31,6 +31,14 @@
 	margin-inline: auto;
 	margin-top: 2rem;
 
+	.icons {
+		font-size: 2rem;
+		margin-top: 2rem;
+		display: flex;
+		align-items: center;
+		gap: 1.5rem;
+	}
+
 	h1 {
 		margin-bottom: 1.5rem;
 		font-size: 2.5rem;
@@ -41,10 +49,13 @@
 	span {
 		font-family: sans-serif;
 		color: #000;
+		font-weight: 300;
+		line-height: 1.9rem;
 	}
 
 	span {
-		font-weight: 300;
+		font-weight: 600 !important;
+		color: rgba($color: #000, $alpha: 0.9);
 	}
 
 	> div {
@@ -58,7 +69,16 @@
 			object-fit: "contain";
 			width: 30%;
 			height: 100%;
-			border-radius: 14px;
+			// border-radius: 14px;
+			// -webkit-transform: scale(1);
+			// transform: scale(1);
+			filter: grayscale(100%);
+			transition: 0.3s ease-in-out;
+			&:hover {
+				filter: none;
+				// -webkit-transform: scale(1.3);
+				// transform: scale(1.3);
+			}
 		}
 	}
 }

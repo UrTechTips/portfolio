@@ -81,10 +81,11 @@
 		}
 		.description {
 			margin-block: 2rem;
-			font-size: 1.1rem;
+
+			font-size: 1.3rem;
 			font-family: sans-serif;
-			letter-spacing: 0.05rem;
-			line-height: 1.5rem;
+			letter-spacing: 0.15px;
+			line-height: 2.3rem;
 		}
 		.overview {
 			margin-top: 2.5rem;
@@ -141,17 +142,17 @@
 		// Section
 		.section {
 			margin-bottom: 2rem;
-			font-family: sans-serif; //TODO: FontFamily
+			font-family: "proxima-nova", sans-serif; //TODO: FontFamily
 
 			.sectionHead {
-				font-size: 2rem;
+				font-size: 2.25rem;
 				margin-bottom: 0.8rem;
 			}
 			.sectionDesc {
-				font-size: 1.1rem;
+				font-size: 1.45rem;
 				font-family: sans-serif;
-				letter-spacing: 0.025rem;
-				line-height: 1.5rem;
+				letter-spacing: 0.15px;
+				line-height: 2.3rem;
 				color: rgba($color: #fff, $alpha: 0.8);
 			}
 			.sectionLine {
@@ -175,4 +176,19 @@
 .navigationActive {
 	font-size: 1.35rem !important;
 	color: rgba($color: #fff, $alpha: 0.9) !important;
+}
+
+@media (max-width: 880px) {
+	.body {
+		border: 1px solid white;
+		display: flex;
+		justify-content: center;
+		flex-direction: row;
+	}
+	.navigation {
+		// display: none;
+
+		max-width: 0% !important;
+		position: absolute;
+	}
 }

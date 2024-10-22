@@ -1,9 +1,10 @@
 {
-	"about": "Hello! I'm Sai Sreenadh, known professionally as STron, a student based in India. I specialize in UI design and full stack development, particularly with Next.js and Figma. I hold a B.Tech degree and am passionate about creating user-friendly interfaces and robust web applications.\nWhen I'm not coding, I enjoy playing video games and reading books. My goal is to achieve success in the tech industry by continuously learning and innovating.",
+	"about": "Hello! I'm Sai Sreenadh, professionally known as STron. I’m a student based in India, specializing in UI design and full-stack development, with expertise in Next.js and Figma. I'm currently pursuing a B.Tech degree and have a strong passion for building user-friendly interfaces and robust web applications.\n Outside of coding, you’ll find me playing video games or diving into books. My goal is to continuously grow in the tech industry by learning, innovating, and achieving success.",
+	"aboutEloborate": "Hello! I’m Sai Sreenadh, known professionally as STron, a passionate Full-Stack Developer currently pursuing a B.Tech degree. I specialize in creating intuitive and responsive user interfaces with tools like Next.js and Figma, while also ensuring seamless backend functionality using Node.js and Express. My focus is on building user-friendly, efficient web applications that merge both technical proficiency and creative design.\nI’m committed to continuously learning and evolving in the fast-paced world of technology, always seeking innovative solutions and staying up-to-date with the latest tools and trends in web development.",
 	"linkedin": "https://www.linkedin.com/in/sai-sreenadh/",
 	"github": "https://github.com/UrTechTips/",
 	"picture": "https://learn-lab.vercel.app/images/Sreenadh.jpg",
-	"bento": ["0 Year Experience", "0 Successfull Clients", "2 Completed Projects", "Don't know something"],
+	"bento": ["Growing Experience", "Seeking Opportunities", "2 Completed Projects", "Eager to Explore"],
 	"projects": [
 		{
 			"title": "TicTacToe",
@@ -43,13 +44,25 @@
 			"key_takeaways": {
 				"lines": ["This project allowed me to explore the integration of AI in web games, improving my skills in algorithm optimization through alpha-beta pruning. I also gained hands-on experience with Next.js, Firebase, and responsive design principles, enhancing both my frontend and backend development capabilities.", "The biggest takeaway was the importance of balancing user experience with technical complexity, ensuring that AI-driven gameplay remains challenging without overwhelming system resources. The project underscored the value of clean, maintainable code that is scalable and adaptable for future enhancements."]
 			}
+		},
+		{
+			"title": "Laybrinth Legend",
+			"link": "DNE",
+			"image": "/images/laybrinth-legend.jpg"
 		}
 	],
 	"timeline": [
 		{
-			"title": "Vellore Inistitute of Technology, Andhra Pradesh",
-			"content": "The 'Portfolio' project is a personal showcase of my skills and projects, designed to leave a lasting impression on visitors. Developed using Next.js and SCSS, it combines sleek, modern aesthetics with smooth functionality. The site features an interactive UI, highlighting my expertise in both front-end and back-end development. With a responsive design, it ensures an optimal viewing experience on all devices. This project demonstrates my ability to create professional, user-friendly web applications and serves as a testament to my dedication to quality and innovation in web development.",
-			"duration": "2023 - 2027"
+			"title": "Sri Chaitanya Educational Institutions (MPC)",
+			"content": "At Sri Chaitanya, I focused on building a strong foundation in Mathematics, Physics, and Chemistry. This background sharpened my analytical and problem-solving skills, which I continue to apply in my development work. It was here that I first developed a passion for technology, which later led me to pursue a career in full-stack development.",
+			"duration": "2021 - 2023",
+			"image": "/images/school.svg"
+		},
+		{
+			"title": "Vellore Institute of Technology, Andhra Pradesh",
+			"content": "Currently pursuing my B.Tech degree in Computer Science at VIT, I am gaining a deeper understanding of full-stack development, data structures, artificial intelligence, and modern web technologies. My time here has been instrumental in expanding my skill set in both front-end and back-end development, preparing me for the tech industry.",
+			"duration": "2023 - 2027",
+			"image": "/images/university.svg"
 		}
 	]
 }
