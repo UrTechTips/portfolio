@@ -1,14 +1,12 @@
 "use client";
 import Cursor from "@/components/cursor/cursor.component";
-import { useGSAP } from "@gsap/react";
 import gsap from "gsap";
-import { ScrollToPlugin } from "gsap/ScrollToPlugin";
-import { ScrollTrigger } from "gsap/ScrollTrigger";
 import { Inter } from "next/font/google";
 import Head from "next/head";
-import React, { RefObject, createContext, useRef, useState } from "react";
-import "./globals.css";
+import React, { useRef, useState } from "react";
 import { gsapContext } from "./context";
+import "./globals.css";
+import { Analytics } from "@vercel/analytics/react";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -41,7 +39,10 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
 				</Head>
 				<body className={inter.className}>
 					<Cursor cursorRef={cursorRef} isCursorStuck={isCursorStuck} />
-					<div>{children}</div>
+					<div>
+						{children}
+						<Analytics />
+					</div>
 				</body>
 			</html>
 		</gsapContext.Provider>
