@@ -145,7 +145,7 @@ export default function Home() {
 					<div className={styles.contact} id="Contact">
 						<div className={styles.left}>
 							<h1>Want to make a project together?</h1>
-							<h3>Rech out to me.</h3>
+							<h3>Reach out to me.</h3>
 							<div className={styles.icons}>
 								<Link href={portfolioData.github} target="_blank">
 									<FaGithub onMouseEnter={cursorAnims.linkMouseEnter} onMouseLeave={cursorAnims.linkMouseLeave} />
