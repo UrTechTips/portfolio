@@ -11,6 +11,7 @@ import useCursorAnim from "@/hooks/useCursorAnimations";
 import { useRouter } from "next/navigation";
 import { gsapContext } from "./context";
 import Link from "next/link";
+import MainAlert from "@/components/mainAlert/mainAlert.component";
 
 export default function Home() {
 	const router = useRouter();
@@ -27,6 +28,7 @@ export default function Home() {
 	const [name, setName] = useState("");
 	const [email, setEmail] = useState("");
 	const [message, setMessage] = useState("");
+	const [isMainAlertVisible, setIsMainAlertVisible] = useState(true);
 
 	useGSAP(() => {
 		gsap.set([navItemsRef1.current, navItemsRef2.current, navItemsRef3.current], { x: "-101%", opacity: 0 });
@@ -81,6 +83,10 @@ export default function Home() {
 		router.push(`\\projects\\${name.toLowerCase()}`);
 	};
 
+	const handleMainAlertClose = () => {
+		setIsMainAlertVisible(false);
+	};
+
 	return (
 		<>
 			<SideNav navRefs={[navItemsRef1, navItemsRef2, navItemsRef3]} mouseEnter={cursorAnims.linkMouseEnter} mouseLeave={cursorAnims.linkMouseLeave}></SideNav>
@@ -88,6 +94,17 @@ export default function Home() {
 				<nav>
 					<h1>STron</h1>
 				</nav>
+				{isMainAlertVisible && (
+					<MainAlert onClose={handleMainAlertClose}>
+						<div>
+							I&#39;m open to work.{" "}
+							<a style={{ textDecoration: "underline", fontWeight: "bold" }} href="/Resume.pdf" target="_blank" download="sreenadh_cv">
+								Download my CV
+							</a>
+						</div>
+					</MainAlert>
+				)}
+
 				<div className={styles.hero}>
 					<h1 className={styles.heroText} ref={heroTextsRef}>
 						I am Sai Sreenadh.

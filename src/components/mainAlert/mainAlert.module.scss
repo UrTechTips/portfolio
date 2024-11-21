@@ -1,0 +1,26 @@
+.container {
+	position: absolute;
+	width: 30%;
+	transform: translateX(-50%);
+	left: 50%;
+	background-color: #0d1112;
+	color: #fff;
+
+	padding: 0.5rem 2rem;
+	border: 1px solid #fff;
+	border-radius: 8px;
+	margin-top: 2rem;
+
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+	align-content: center;
+
+	.left {
+		font-size: 1rem;
+	}
+
+	.right {
+		font-size: 1rem;
+	}
+}
