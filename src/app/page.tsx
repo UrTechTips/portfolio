@@ -13,7 +13,7 @@ type Repo = {
 	config: Record<string, any>;
 };
 
-export const getStatics = async (): Promise<Repo> => {
+const getStatics = async (): Promise<Repo> => {
 	try {
 		const config = await getAll();
 		return { portfolioData: Data as portfolioDataType, config };
