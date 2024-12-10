@@ -9,4 +9,6 @@ interface LayoutContextType {
 	setIsCursorStuck: Dispatch<SetStateAction<boolean>>;
 }
 
+gsap.registerPlugin(ScrollTrigger);
+
 export const gsapContext = createContext<LayoutContextType>({ gsap: gsap, cursorRef: null as unknown as RefObject<HTMLDivElement>, isCursorStuck: false, setIsCursorStuck: null as unknown as Dispatch<SetStateAction<boolean>> });
