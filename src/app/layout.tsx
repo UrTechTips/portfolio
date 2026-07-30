@@ -15,14 +15,8 @@ const inter = Inter({ subsets: ["latin"] });
 const assets = ["/next.svg", "/ScrollDownAnimation.json", "/vercel.svg"];
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
-	const [isLoading, setIsLoading] = useState(false);
 	const [isCursorStuck, setIsCursorStuck] = useState(false);
-	const [loadedCount, setLoadedCount] = useState(0);
 	const cursorRef = useRef<HTMLDivElement>(null);
-
-	React.useEffect(() => {
-		setTimeout(() => setIsLoading(true), 3000);
-	}, []);
 
 	return (
 		<gsapContext.Provider value={{ gsap: gsap, cursorRef: cursorRef, isCursorStuck: isCursorStuck, setIsCursorStuck: setIsCursorStuck }}>
@@ -44,17 +38,11 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
 					</Head>
 				</Head>
 				<body className={inter.className}>
-					{!isLoading ? (
-						<Loading></Loading>
-					) : (
-						<>
-							<Cursor cursorRef={cursorRef} isCursorStuck={isCursorStuck} />
-							<div>
-								{children}
-								<Analytics />
-							</div>
-						</>
-					)}
+					<Cursor cursorRef={cursorRef} isCursorStuck={isCursorStuck} />
+					<div>
+						{children}
+						<Analytics />
+					</div>
 				</body>
 			</html>
 		</gsapContext.Provider>
