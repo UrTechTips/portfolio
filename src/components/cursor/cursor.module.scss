@@ -8,7 +8,7 @@
 	background-color: #fff;
 	mix-blend-mode: difference;
 	transform: translate(-50%, -50%);
-	transition: all 0.25s ease-out;
+	transition: width 0.25s ease-out, height 0.25s ease-out, background-image 0.25s ease-out, mix-blend-mode 0.25s ease-out;
 	pointer-events: none;
 
 	background-size: cover;

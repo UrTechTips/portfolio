@@ -42,18 +42,20 @@ const useCursorAnimations = (cursorRef: RefObject<HTMLDivElement>) => {
 			cursorRef.current.style.width = "20rem";
 			cursorRef.current.style.height = `${(20 * 9) / 16}rem`;
 			cursorRef.current.style.mixBlendMode = "normal";
+			cursorRef.current.style.backgroundColor = "#000";
 			cursorRef.current.style.backgroundImage = `url(${image})`;
-			cursorRef.current.style.backgroundSize = "cover";
+			cursorRef.current.style.backgroundSize = "contain";
 			cursorRef.current.style.backgroundPosition = "center";
 		}
 	};
-
+	
 	const projectMouseLeave = () => {
 		if (cursorRef.current) {
 			cursorRef.current.style.borderRadius = "50%";
 			cursorRef.current.style.border = "none";
 			cursorRef.current.style.width = "1.5rem";
 			cursorRef.current.style.height = "1.5rem";
+			cursorRef.current.style.backgroundColor = "#fff";
 			cursorRef.current.style.mixBlendMode = "difference";
 			cursorRef.current.style.backgroundImage = "none";
 		}
