@@ -1,0 +1,37 @@
+---
+title: "Ledger"
+order: 3
+tagline: "A book-tracking app for people who actually finish their to-be-read pile — barcode-based import via Open Library, a reorder algorithm that keeps your queue honest, and row-level security done properly."
+meta:
+  - label: "Role"
+    value: "Solo — Full Stack"
+  - label: "Stack"
+    value: "Next.js 16, Supabase"
+  - label: "Timeline"
+    value: "Ongoing"
+  - label: "Status"
+    value: "Completed — Live"
+highlights:
+  - "Barcode-based book import via the Open Library API, so adding a book is a scan instead of a manual search-and-select"
+  - "Full CRUD workflows across every reading state — want to read, reading, finished — rather than a single flat list"
+  - "Custom TBR (to-be-read) reorder algorithm that resurfaces books intelligently instead of leaving the queue as a static, ignorable list"
+  - "Secure authentication backed by Postgres row-level security, so access is enforced at the database layer itself, not just gated in the frontend"
+  - "Custom cover image uploads via Supabase Storage, for authenticated users to override the default cover art on a specific edition"
+  - "Custom modal system built without a UI library dependency, for a lighter and more tailored interaction layer"
+stack: ["Next.js", "Supabase", "PostgreSQL", "Supabase Storage", "Supabase Auth", "Open Library API"]
+links:
+  - label: "Visit live site"
+    href: "https://ledger-six-zeta.vercel.app/"
+  - label: "View source on GitHub"
+    href: "https://github.com/UrTechTips/ledger"
+mainLink: "https://ledger-six-zeta.vercel.app/"
+thumbnail: ""
+---
+
+Most reading trackers treat your to-be-read list as a dumping ground — books go in and rarely come back out unless you scroll to find them. Ledger was built to fix that: a book-tracking app that actively helps you decide what to read next, instead of just logging what you've read.
+
+Adding books is meant to be near-instant — a barcode scan looks the title up via the Open Library API instead of a manual search. From there, full CRUD workflows carry a book across every reading state, and a custom reorder algorithm keeps the TBR queue from turning into a static list nobody looks at again.
+
+The part of Ledger I'd point to first in an interview is the data model, not a feature. Every table is scoped per user, and access is enforced through Postgres row-level security policies — not just hidden behind frontend routes. That distinction matters: it's the difference between "the UI doesn't show you someone else's data" and "the database physically won't return someone else's data" even if the frontend check were bypassed entirely.
+
+Custom cover uploads round it out — letting a user override the default cover art for a specific edition via Supabase Storage, tied to the same per-user, authenticated access model as everything else in the app.

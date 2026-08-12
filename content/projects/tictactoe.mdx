@@ -1,0 +1,43 @@
+---
+title: "TicTacToe"
+order: 6
+tagline: "A real-time Tic-Tac-Toe game with Elo-based AI difficulty and online multiplayer — built to explore React state, game logic, Firebase authentication, and synchronized gameplay."
+meta:
+  - label: "Role"
+    value: "Design & Development"
+  - label: "Stack"
+    value: "Next.js, React & Firebase"
+  - label: "Timeline"
+    value: "1 week"
+  - label: "Status"
+    value: "Completed — Live"
+visual:
+  type: "board"
+  boardState: ["X", "", "O", "", "X", "O", "", "", "X"]
+  winLine: true
+highlights:
+  - "Elo-based AI difficulty that adapts the opponent's strength across different rating levels"
+  - "Real-time multiplayer gameplay with friends through Firebase"
+  - "Firebase authentication for persistent player accounts and online gameplay"
+  - "Instant win and draw detection with the winning combination highlighted automatically"
+  - "Responsive game board designed to work cleanly across desktop and mobile"
+  - "Persistent gameplay state and score tracking without page reloads"
+stack: ["Next.js", "React", "Firebase", "Firebase Authentication", "Firestore", "CSS Modules", "Vercel"]
+links:
+  - label: "Visit live site"
+    href: "https://tictactoe-web-phi.vercel.app/"
+  - label: "View source on GitHub"
+    href: "https://github.com/UrTechTips/TicTacToe-Web"
+mainLink: "https://tictactoe-web-phi.vercel.app/"
+thumbnail: "/images/tictactoe-web.png"
+---
+
+I built TicTacToe as a deeper React project to go beyond basic component rendering and work with real game state, multiplayer synchronization, authentication, and opponent logic.
+
+The game supports both AI and real-time multiplayer gameplay. For single-player matches, the AI uses an Elo-based difficulty system, allowing different levels of opponents rather than relying on a simple fixed difficulty setting. This gives the game a progression system where the strength of the opponent is tied to a rating-based model.
+
+For multiplayer, players can authenticate through Firebase and play with friends in real time. Game state is synchronized through Firebase so that moves made by one player are reflected immediately for the other player without requiring a page refresh.
+
+The core game logic handles turn management, valid moves, win and draw detection, and automatic highlighting of winning combinations. React manages the local UI state while Firebase handles authentication and the persistent, synchronized multiplayer state.
+
+The project gave me practical experience building an interactive application where game logic, asynchronous real-time data, authentication, and UI state all have to work together reliably.  

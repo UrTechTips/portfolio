@@ -13,13 +13,15 @@ import Link from "next/link";
 import MainAlert from "@/components/mainAlert/mainAlert.component";
 import { gsapContext } from "@/app/context";
 import portfolioDataType from "@/types/portfolioData.type";
+import { ProjectFrontmatter } from "@/lib/projects";
 
 interface LandingProps {
 	portfolioData: portfolioDataType;
+	projects: ProjectFrontmatter[];
 	config?: any;
 }
 
-const Landing: FC<LandingProps> = ({ portfolioData, config }) => {
+const Landing: FC<LandingProps> = ({ portfolioData, projects, config }) => {
 	const router = useRouter();
 	const heroTextsRef = useRef(null);
 	const navItemsRef1 = useRef<HTMLAnchorElement>(null);
@@ -86,7 +88,7 @@ const Landing: FC<LandingProps> = ({ portfolioData, config }) => {
 
 	const handleProjectClick = (name: string) => {
 		cursorAnims.projectMouseLeave();
-		router.push(`\\projects\\${name.toLowerCase()}`);
+		router.push(`\\projects\\${name.toLowerCase().replaceAll(" ", "-")}`);
 	};
 
 	const handleMainAlertClose = () => {
@@ -114,7 +116,7 @@ const Landing: FC<LandingProps> = ({ portfolioData, config }) => {
 				<div className={styles.hero}>
 					<h1 className={styles.heroText} ref={heroTextsRef}>
 						I am Sai Sreenadh.
-						<br /> A Full-Stack <br /> Developer.
+						<br /> A Full-Stack & AIML <br /> Engineer.
 					</h1>
 				</div>
 
@@ -142,17 +144,17 @@ const Landing: FC<LandingProps> = ({ portfolioData, config }) => {
 				<div className={styles.bodyBlack}>
 					<div className={styles.projects} id="Projects">
 						<h1>Selected Projects</h1>
-						{portfolioData.projects.map((project, index) => {
+						{projects.map((project, index) => {
 							return (
 								<div key={index} className={styles.project} id="project">
-									<div className={styles.left} onClick={() => handleProjectClick(project.title)} onMouseEnter={() => cursorAnims.projectMouseEnter(project.image)} onMouseLeave={() => cursorAnims.projectMouseLeave()}>
+									<div className={styles.left} onClick={() => handleProjectClick(project.title)} onMouseEnter={() => cursorAnims.projectMouseEnter(project.thumbnail!)} onMouseLeave={() => cursorAnims.projectMouseLeave()}>
 										<h2>
 											<span>#{index + 1}</span> {project.title}
 										</h2>
 									</div>
 									<div className={styles.right}>
-										{project.link != "DNE" ? (
-											<a href={project.link} target="_blank" onMouseEnter={() => cursorAnims.linkMouseEnter()} onMouseLeave={() => cursorAnims.linkMouseLeave()}>
+										{project.mainLink != "DNE" ? (
+											<a href={project.mainLink} target="_blank" onMouseEnter={() => cursorAnims.linkMouseEnter()} onMouseLeave={() => cursorAnims.linkMouseLeave()}>
 												Visit <FaExternalLinkAlt />
 											</a>
 										) : (

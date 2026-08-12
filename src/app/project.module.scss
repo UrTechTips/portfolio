@@ -1,0 +1,255 @@
+.blackBG {
+	background-color: #0d1112;
+	padding: 0;
+	margin: 0;
+	width: 100%;
+	min-height: 100%;
+
+	color: #fff;
+	position: absolute;
+	top: 0;
+	left: 0;
+}
+
+.navbar {
+	position: fixed;
+	margin-top: 1rem;
+	padding-inline: 2rem;
+
+	.icon {
+		font-size: 1.5rem;
+	}
+
+	a {
+		display: flex;
+		align-items: center;
+		gap: 0.3rem;
+		font-size: 0.7rem;
+	}
+}
+
+.body {
+	width: 60%;
+	margin-inline: auto;
+	margin-top: 4rem;
+}
+
+@media (max-width: 880px) {
+	.body {
+		border: 1px solid white;
+		display: flex;
+		justify-content: center;
+		flex-direction: row;
+	}
+	.navigation {
+		// display: none;
+
+		max-width: 0% !important;
+		position: absolute;
+	}
+}
+
+// ---------- fade-up (GSAP-driven, not CSS keyframes) ----------
+.fadeUp {
+	opacity: 0;
+}
+@media (prefers-reduced-motion: reduce) {
+	.fadeUp { opacity: 1 !important; }
+}
+
+// ---------- hero ----------
+.hero {
+	margin-bottom: 4rem;
+
+	.eyebrow {
+		font-size: 1.1rem;
+		letter-spacing: 0.12em;
+		text-transform: uppercase;
+		opacity: 0.55;
+		margin-bottom: 1rem;
+	}
+
+	h1 {
+		font-size: clamp(2.6rem, 6vw, 4.5rem);
+		font-weight: 700;
+		line-height: 1.05;
+		margin-bottom: 1.5rem;
+	}
+
+	.tagline {
+		font-size: 1.35rem;
+		line-height: 2rem;
+		max-width: 38rem;
+		opacity: 0.85;
+	}
+}
+
+// ---------- meta grid (reused for both project meta and AI/ML results) ----------
+.metaGrid {
+	display: flex;
+	gap: 1.5rem;
+	flex-wrap: wrap;
+	margin-bottom: 5rem;
+
+	.metaCell {
+		flex: 1 1 200px;
+		border: 1px solid #fff;
+		border-radius: 0.5rem;
+		padding: 2rem;
+
+		.label {
+			font-size: 0.85rem;
+			text-transform: uppercase;
+			letter-spacing: 0.08em;
+			opacity: 0.55;
+			margin-bottom: 0.6rem;
+		}
+		.value {
+			font-size: 1.3rem;
+			font-weight: 600;
+		}
+	}
+}
+
+// ---------- visual (board demo / screenshot / chart slot) ----------
+.visual {
+	border: 1px solid #fff;
+	border-radius: 0.5rem;
+	padding: 3.5rem 1.5rem;
+	margin-bottom: 5rem;
+	display: flex;
+	justify-content: center;
+}
+
+.board {
+	position: relative;
+	width: min(300px, 70vw);
+	aspect-ratio: 1;
+	display: grid;
+	grid-template-columns: repeat(3, 1fr);
+	grid-template-rows: repeat(3, 1fr);
+
+	.cell {
+		display: flex;
+		align-items: center;
+		justify-content: center;
+		font-size: clamp(2.2rem, 7vw, 3.2rem);
+		font-weight: 700;
+	}
+	.cell:nth-child(1), .cell:nth-child(2), .cell:nth-child(3),
+	.cell:nth-child(4), .cell:nth-child(5), .cell:nth-child(6) {
+		border-bottom: 1px solid #fff;
+	}
+	.cell:nth-child(1), .cell:nth-child(4), .cell:nth-child(7),
+	.cell:nth-child(2), .cell:nth-child(5), .cell:nth-child(8) {
+		border-right: 1px solid #fff;
+	}
+}
+
+.winLine {
+	position: absolute;
+	top: 50%;
+	left: 50%;
+	width: 118%;
+	height: 2px;
+	background: #fff;
+	transform: translate(-50%, -50%) rotate(45deg);
+}
+
+// ---------- overview / features / results ----------
+.overview, .features, .stackSection {
+	margin-bottom: 5rem;
+
+	h2 {
+		font-size: 2rem;
+		font-weight: 700;
+		margin-bottom: 1.5rem;
+	}
+}
+
+.overview p {
+	font-size: 1.3rem;
+	line-height: 2.3rem;
+	opacity: 0.9;
+	margin-bottom: 1.5rem;
+	max-width: 44rem;
+}
+
+.features ul { list-style: none; }
+.features li {
+	font-size: 1.3rem;
+	line-height: 2.3rem;
+	padding-left: 1.5rem;
+	position: relative;
+	opacity: 0.9;
+	max-width: 44rem;
+
+	&::before {
+		content: "—";
+		position: absolute;
+		left: 0;
+		opacity: 0.5;
+	}
+}
+
+// ---------- tech stack pills ----------
+.pills {
+	display: flex;
+	flex-wrap: wrap;
+	gap: 1rem;
+}
+.pill {
+	border: 1px solid #fff;
+	border-radius: 2rem;
+	padding: 0.6rem 1.4rem;
+	font-size: 1rem;
+	transition: background 0.25s ease-in-out, color 0.25s ease-in-out;
+
+	&:hover { background: #fff; color: #000; }
+}
+
+// ---------- links ----------
+.linksSection { margin-bottom: 5rem; }
+.linkRow {
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+	padding: 1.6rem 0;
+	border-top: 1px solid #fff;
+	font-size: 1.5rem;
+	font-weight: 600;
+	transition: background 0.4s ease-in-out, color 0.4s ease-in-out;
+
+	&:hover { background: #fff; color: #000; }
+	.arrow { font-size: 1.1rem; }
+}
+.linksSection .linkRow:last-child { border-bottom: 1px solid #fff; }
+
+// ---------- next project ----------
+.nextRow {
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+	padding: 2.2rem 0;
+	border-top: 1px solid #fff;
+	border-bottom: 1px solid #fff;
+	transition: background 0.4s ease-in-out, color 0.4s ease-in-out;
+	margin-bottom: 5rem;
+
+	&:hover { background: #fff; color: #000; }
+
+	.nextLabel {
+		font-size: 0.95rem;
+		opacity: 0.55;
+		text-transform: uppercase;
+		letter-spacing: 0.08em;
+		display: block;
+		margin-bottom: 0.4rem;
+	}
+	.nextTitle { font-size: clamp(1.6rem, 4vw, 2rem); font-weight: 700; }
+	.nextArrow { font-size: 1.8rem; }
+}
+
+@media (max-width: 600px) {
+	.metaGrid { flex-direction: column; }
+}

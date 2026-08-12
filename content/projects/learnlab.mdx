@@ -1,0 +1,34 @@
+---
+title: "LearnLab"
+order: 4
+tagline: "A full-stack Learning Management System built in a hackathon sprint with a six-person team — I led integration and built the frontend, including an in-app document viewer."
+meta:
+  - label: "Role"
+    value: "Team Lead (Team of 6)"
+  - label: "Stack"
+    value: "Next.js, React, Firebase"
+  - label: "Timeline"
+    value: "Hackathon (48–72 hrs)"
+  - label: "Status"
+    value: "Completed"
+highlights:
+  - "Led integration across a six-person team, merging independently built frontend and backend pieces into one working application under time pressure"
+  - "Personally developed the frontend interfaces, on top of leading the team's integration work"
+  - "Built an in-app document viewer for course content, backed by Firebase Cloud Storage for document storage"
+  - "Integrated Firebase Authentication and Firestore for user accounts and course content management"
+  - "Structured the content data model so multiple contributors could add material in parallel without overwriting each other's work"
+stack: ["Next.js", "React", "Firebase Authentication", "Firestore", "Firebase Cloud Storage", "JavaScript"]
+links:
+  - label: "View live site"
+    href: "https://learn-lab.vercel.app/"
+  - label: "View source on GitHub"
+    href: "https://github.com/UrTechTips/learnlab"
+mainLink: "https://learn-lab.vercel.app/"
+thumbnail: ""
+---
+
+LearnLab was built during a hackathon, where the real constraint wasn't the tech — it was coordinating six people toward one working product in a very short window. As lead, my job covered both directions: making sure the pieces different teammates were building would fit together, and building a meaningful chunk of the frontend myself.
+
+The app is a Learning Management System: users authenticate, browse course content, and view course documents directly in-app rather than downloading them — the in-app document viewer was one of the more fiddly pieces to get right, backed by Firebase Cloud Storage for the underlying files and Firestore for course metadata.
+
+The harder problem, though, was integration. With frontend and backend built in parallel by different people, keeping data contracts consistent — what shape the user object took, how content documents were structured in Firestore — was the difference between a demo that worked on stage and one that didn't. Managing that consistency, while also shipping frontend work myself, was the actual project.

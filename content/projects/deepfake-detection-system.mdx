@@ -1,0 +1,37 @@
+---
+title: "Deepfake Detection System"
+order: 5
+tagline: "A spatio-temporal deepfake detection model combining ViT-based per-frame features with a BiLSTM temporal head, hitting 94.67% accuracy on FaceForensics++."
+meta:
+  - label: "Role"
+    value: "Team of 3"
+  - label: "Stack"
+    value: "Python, PyTorch, ViT, BiLSTM"
+  - label: "Timeline"
+    value: "Completed"
+  - label: "Status"
+    value: "Completed"
+results:
+  - label: "Task"
+    value: "Binary classification — real vs. manipulated (FaceSwap)"
+  - label: "Accuracy"
+    value: "94.67% on FaceForensics++ (FaceSwap)"
+  - label: "Approach"
+    value: "ViT per-frame features + BiLSTM temporal head"
+highlights:
+  - "Designed and trained a spatio-temporal deepfake detection model combining ViT-based per-frame feature extraction with a BiLSTM temporal head, achieving 94.67% accuracy on the FaceForensics++ (FaceSwap) benchmark — outperforming baseline architectures by up to 8 points of accuracy"
+  - "Built an end-to-end video preprocessing pipeline using RetinaFace-based face detection/cropping and multithreaded frame sampling to convert raw FaceForensics++ video into model-ready training data"
+  - "Collaborated with 2 teammates, splitting the pipeline into clear stages: data preprocessing, model architecture, and evaluation"
+stack: ["Python", "PyTorch", "Vision Transformer", "BiLSTM", "OpenCV", "scikit-learn"]
+links:
+  - label: "View source on GitHub"
+    href: "https://github.com/UrTechTips/deepfake-detection"
+mainLink: "https://github.com/UrTechTips/deepfake-detection"
+thumbnail: ""
+---
+
+Deepfake generation techniques leave behind subtle visual inconsistencies — artefacts that aren't obvious to the human eye but are learnable by a model trained specifically to look for them. This project set out to build that model: a spatio-temporal classifier that combines a Vision Transformer (ViT) for per-frame feature extraction with a BiLSTM temporal head to capture how those artefacts evolve across frames.
+
+Trained and evaluated on the FaceForensics++ (FaceSwap) benchmark, the model reached 94.67% accuracy, outperforming baseline architectures by up to 8 points. Getting there meant building a proper video preprocessing pipeline first: RetinaFace-based face detection and cropping paired with multithreaded frame sampling to turn raw FaceForensics++ video into model-ready training data at a reasonable throughput.
+
+Working as a three-person team meant splitting the pipeline into clear stages: preprocessing and dataset preparation, model architecture (ViT + BiLSTM) and training, and evaluation. Coordinating those handoffs cleanly was almost as much a part of the project as the modeling itself.

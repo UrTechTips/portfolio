@@ -1,0 +1,43 @@
+---
+title: "VeloxSearch"
+order: 1
+tagline: "A search-as-a-service engine, inspired by Algolia — hybrid BM25 and dense-embedding retrieval, Redis-backed caching, and an access model built around scoped API keys rather than shared credentials."
+meta:
+  - label: "Role"
+    value: "Solo — Backend & API Design"
+  - label: "Stack"
+    value: "FastAPI, Redis, Next.js"
+  - label: "Timeline"
+    value: "Ongoing"
+  - label: "Status"
+    value: "Live — Actively Extended"
+results:
+  - label: "Retrieval"
+    value: "Hybrid BM25 + Dense Embeddings"
+  - label: "Access Model"
+    value: "Scoped API Keys"
+  - label: "Roadmap"
+    value: "18 planned features"
+highlights:
+  - "Hybrid retrieval pipeline combining BM25 keyword scoring with dense embedding similarity, so results catch semantic matches that pure keyword search would miss"
+  - "Redis caching layer in front of the retrieval path, eliminating repeated database lookups on hot queries"
+  - "Access control built around scoped API keys rather than a single shared credential — each key governs what a given client can query, index, or manage, the same scoping principle used in identity governance for machine-to-machine access"
+  - "Admin dashboard in Next.js for indexing documents, inspecting query performance, and managing collections without touching the API directly"
+  - "Actively maintained feature roadmap spanning per-key rate limiting, field-level result filtering, hit highlighting in returned snippets, and a client SDK for easier integration"
+stack: ["FastAPI", "Redis", "SQLite", "Next.js", "Python", "TypeScript"]
+links:
+  - label: "View backend source on GitHub"
+    href: "https://github.com/UrTechTips/veloxsearch"
+  - label: "View frontend source on GitHub"
+    href: "https://github.com/UrTechTips/veloxsearchfrontend"
+mainLink: "https://github.com/UrTechTips/veloxsearch"
+thumbnail: ""
+---
+
+VeloxSearch started as an attempt to answer a simple question: what does it actually take to build the kind of search infrastructure that products like Algolia sell as a managed service? Rather than reaching for a hosted search API, I built the retrieval pipeline, caching layer, and access model myself.
+
+The core retrieval problem was speed without sacrificing relevance. A naive approach either hits the database on every query or relies purely on keyword matching. VeloxSearch takes a hybrid approach — BM25 handles fast keyword-level scoring, dense embeddings catch semantic matches that keyword search alone would miss, and Redis sits in front of both so repeated queries never touch the underlying store twice.
+
+The part I'm most glad I didn't skip is access control. Instead of a single API key guarding the whole service, each key is scoped to what that specific client is allowed to do — query, index, or manage collections independently. It's a small design decision, but it's the same principle behind proper non-human-identity governance in production systems, and it turned VeloxSearch from "a search script with an API in front of it" into something closer to an actual service.
+
+The roadmap keeps growing as I use the admin dashboard myself: per-key rate limiting, field-level filtering on result sets, highlighting matched terms in returned snippets, and eventually a small client SDK so integrating VeloxSearch doesn't mean hand-rolling HTTP calls.

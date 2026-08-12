@@ -5,52 +5,6 @@
 	"github": "https://github.com/UrTechTips/",
 	"picture": "https://learn-lab.vercel.app/images/Sreenadh.jpg",
 	"bento": ["Growing Experience", "Seeking Opportunities", "2 Completed Projects", "Eager to Explore"],
-	"projects": [
-		{
-			"title": "TicTacToe",
-			"link": "https://tictactoe-web-phi.vercel.app/",
-			"image": "/images/tictactoe-web.png",
-			"gallery": {
-				"lines": ["/images/tictactoe-web.png", "/images/tictactoe/2.png", "/images/tictactoe/3.png", "/images/tictactoe/4.png"]
-			},
-			"technologies": {
-				"lines": ["/technologies/nextjs.png", "/technologies/sass.png", "/technologies/nodejs.png"]
-			},
-			"description": {
-				"lines": ["The 'TicTacToe Web' project is an interactive game where you can challenge your friends or an AI opponent to a classic match of TicTacToe. Built with Next.js, SCSS, and a touch of Node.js, this project combines modern design with seamless functionality. I implemented AI algorithms to create a challenging and dynamic gameplay experience, making each match unpredictable and exciting. The responsive design ensures the game looks and plays great on any device. This project not only boosts user engagement but also showcases how AI can be effectively integrated into simple web games."]
-			},
-			"problem": {
-				"lines": ["The goal was to create an interactive and engaging TicTacToe game that users could enjoy during their free time, providing both single-player and multiplayer experiences. I wanted the game accessible across multiple devices, ensuring a seamless experience whether the users are on their desktop, tablet, or phone.", "Additionally, I aimed to showcase the capabilities of Artificial Intelligence in a simple, fun context. By integrating AI into the game, I wanted to create a challenging opponent for solo players, where the AI could adapt and make the game more interesting rather than predictable. The AI would offer different difficulty levels to keep users engaged, highlighting how even a basic game can leverage AI to enhance the overall gameplay experience."]
-			},
-			"approach": {
-				"lines": ["To achieve this goal, I chose the Next.js framework, built on top of React.js, to power the frontend, offering a modern, efficient, and scalable user interface. For handling the AI and backend logic, I used Node.js. We experimented with various user interface designs and colour schemes before finalizing a dark blue and yellow theme, which creates a visually appealing contrast and enhances the gaming experience.", "A key focus during development was ensuring that the game was fully responsive, providing a seamless experience across all devices, including desktops, tablets, and smartphones. By utilizing responsive design principles and SCSS, I ensured that the game adapts to different screen sizes and orientations without sacrificing usability or visual appeal.", "To enable multiplayer functionality, I integrated Firebase for real-time capabilities. Firestore is used to store ongoing games, while Firebase Authentication ensures secure user logins, safeguarding the platform from potential attacks or misuse by malicious sources.", "For the Artificial Intelligence aspect, I implemented the Minimax algorithm, a well-suited approach for turn-based games like TicTacToe. However, to further optimize the AI's performance, I incorporated alpha-beta pruning, which reduces the search space and improves the algorithm's efficiency. While this introduces a slight trade-off in move accuracy, the accuracy remains more than adequate for a casual game like TicTacToe, ensuring the AI still provides a competitive and enjoyable challenge without compromising game speed."]
-			},
-			"technologies_tools": {
-				"Frontend": "Next.js (built on React.js), SCSS",
-				"Backend": "Node.js",
-				"Real-Time Database & Authentication": "Firebase Firestore and Firebase Authentication",
-				"Artificial Intelligence": "Minimax algorithm with alpha-beta pruning"
-			},
-			"challenges": {
-				"lines": ["One of the main challenges was balancing AI complexity with performance. While the Minimax algorithm is effective for small, turn-based games, it can become inefficient as the game progresses and the decision tree grows. To address this, I integrated alpha-beta pruning, which significantly reduced the search space, improving both speed and resource efficiency.", "Another challenge was ensuring a smooth multiplayer experience with real-time updates and secure logins. Using Firebase allowed me to handle real-time interactions effortlessly, and Firestore ensured that game data remained synchronized across devices without lag. Firebase Authentication provided a robust layer of security, helping prevent unauthorized access."]
-			},
-			"outcome": {
-				"lines": ["The result is a highly interactive and engaging TicTacToe game that works flawlessly across all devices. The integration of AI with varying difficulty levels creates a challenging single-player mode, while the multiplayer option adds a social component. The project highlights how modern web technologies can be used to create responsive, feature-rich web games.", "Users have reported that the AI is challenging yet fun, while the responsive design allows them to play anytime, anywhere. The overall feedback suggests the game successfully balances ease of play with a competitive edge, leading to increased user engagement."]
-			},
-			"future_improvements": {
-				"lines": ["To further enhance the gameplay experience, I plan to implement an AI that adjusts its difficulty based on the player's skill level. This would involve creating a more dynamic AI that learns from the player's moves and adapts, providing an evolving challenge as the player improves.", "Other potential improvements include:"],
-				"bullet_points": ["Online leaderboards to encourage competition.", "More game themes to provide visual variety.", "Player statistics tracking, such as win/loss records and AI difficulty preferences."]
-			},
-			"key_takeaways": {
-				"lines": ["This project allowed me to explore the integration of AI in web games, improving my skills in algorithm optimization through alpha-beta pruning. I also gained hands-on experience with Next.js, Firebase, and responsive design principles, enhancing both my frontend and backend development capabilities.", "The biggest takeaway was the importance of balancing user experience with technical complexity, ensuring that AI-driven gameplay remains challenging without overwhelming system resources. The project underscored the value of clean, maintainable code that is scalable and adaptable for future enhancements."]
-			}
-		},
-		{
-			"title": "Laybrinth Legend",
-			"link": "DNE",
-			"image": "/images/laybrinth-legend.jpg"
-		}
-	],
 	"timeline": [
 		{
 			"title": "Sri Chaitanya Educational Institutions (MPC)",

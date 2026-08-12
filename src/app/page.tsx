@@ -3,6 +3,7 @@ import Landing from "@/components/Landing/landing.component";
 import Data from "../../public/portfolio.json";
 import portfolioDataType from "@/types/portfolioData.type";
 import { Metadata } from "next";
+import { getAllProjectsMeta } from "@/lib/projects";
 
 export const metadata: Metadata = {
 	title: "STron",
@@ -25,10 +26,12 @@ const getStatics = async (): Promise<Repo> => {
 
 export default async function Home() {
 	const { portfolioData, config } = await getStatics();
+	const all = getAllProjectsMeta();
+	console.log("All projects meta:", all); // Debugging line to check the fetched data
 
 	return (
 		<>
-			<Landing portfolioData={portfolioData} config={config} />
+			<Landing portfolioData={portfolioData} projects={all} config={config} />
 		</>
 	);
 }

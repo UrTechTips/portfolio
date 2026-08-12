@@ -1,0 +1,40 @@
+---
+title: "QueryDoc"
+order: 2
+tagline: "A Retrieval-Augmented Generation assistant that lets you upload a PDF and ask it questions directly — answers grounded in the document, not the model's imagination."
+meta:
+  - label: "Role"
+    value: "Solo — Full Pipeline"
+  - label: "Stack"
+    value: "Python, Streamlit, Gemini API"
+  - label: "Timeline"
+    value: "Completed"
+  - label: "Status"
+    value: "Completed — Live"
+results:
+  - label: "Architecture"
+    value: "RAG (Retrieval + Generation)"
+  - label: "Retrieval"
+    value: "TF-IDF chunk ranking"
+  - label: "Deployment"
+    value: "Streamlit Cloud"
+highlights:
+  - "Retrieval pipeline that ranks and returns the most relevant document chunks before any text reaches the language model"
+  - "Answers generated via the Gemini API, grounded in retrieved context rather than the model's unguided output"
+  - "Chunking and preprocessing tuned specifically for PDF structure, so retrieval quality holds up on long, multi-section documents"
+  - "Deployed on Streamlit Cloud with proper secrets management, so the app runs without exposing API keys"
+stack: ["Python", "Streamlit", "Gemini API", "TF-IDF", "RAG", "NLP"]
+links:
+  - label: "Visit live site"
+    href: "https://pdf-answerbot.streamlit.app/"
+  - label: "View source on GitHub"
+    href: "https://github.com/UrTechTips/PDF-AnswerBot"
+mainLink: "https://pdf-answerbot.streamlit.app/"
+thumbnail: ""
+---
+
+QueryDoc came out of a straightforward frustration: asking a language model questions about a long PDF usually means either pasting huge chunks of text into a prompt or getting answers that sound confident but aren't actually grounded in the source. I wanted something that answers *from* the document, not *around* it.
+
+The core of QueryDoc is its retrieval step. Before any question reaches the Gemini API, the system ranks the document's chunks using TF-IDF and surfaces only the sections most relevant to the query. That retrieved context becomes part of the prompt, so the model is generating an answer with the actual source material in front of it rather than relying on memorized knowledge or guesswork.
+
+Getting deployment right took its own round of debugging — Streamlit Cloud's secrets handling needed specific configuration before the Gemini API key would resolve correctly in production, separate from how it worked locally. Once that was sorted, the app has run reliably as a live, publicly usable tool rather than just a local script.
