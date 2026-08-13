@@ -12,7 +12,7 @@
 }
 
 .navbar {
-	position: fixed;
+	// position: fixed;
 	margin-top: 1rem;
 	padding-inline: 2rem;
 
@@ -36,7 +36,8 @@
 
 @media (max-width: 880px) {
 	.body {
-		border: 1px solid white;
+		width: 90%;
+		// border: 1px solid white;
 		display: flex;
 		justify-content: center;
 		flex-direction: row;
@@ -70,6 +71,7 @@
 	}
 
 	h1 {
+		color: #fff;
 		font-size: clamp(2.6rem, 6vw, 4.5rem);
 		font-weight: 700;
 		line-height: 1.05;
