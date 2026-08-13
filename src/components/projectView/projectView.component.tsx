@@ -1,14 +1,13 @@
 // components/projectView/projectView.component.tsx
 "use client";
 import { gsapContext } from "@/app/context";
-import SideNav from "@/components/sideNav/sideNav.component";
-import useCursorAnimations from "@/hooks/useCursorAnimations";
-import { useContext, useEffect, useRef, type ReactNode } from "react";
-import { IoMdArrowRoundBack } from "react-icons/io";
-import Link from "next/link";
-import gsap from "gsap";
-import type { ProjectFrontmatter } from "@/lib/projects";
 import styles from "@/app/project.module.scss";
+import useCursorAnimations from "@/hooks/useCursorAnimations";
+import type { ProjectFrontmatter } from "@/lib/projects";
+import gsap from "gsap";
+import Link from "next/link";
+import { useContext, useEffect, useRef, type ReactNode } from "react";
+import Back from "../backLink/backLink.component";
 
 interface Props {
 	frontmatter: ProjectFrontmatter;
@@ -37,13 +36,7 @@ const ProjectView = ({ frontmatter: f, overview, next }: Props) => {
 
 	return (
 		<div className={styles.blackBG} ref={containerRef}>
-			<SideNav mouseEnter={cursorAnims.linkMouseEnter} mouseLeave={cursorAnims.linkMouseLeave} />
-			<div className={styles.navbar}>
-				<a href="/" aria-label="Go back to homepage" onMouseEnter={cursorAnims.linkMouseEnter} onMouseLeave={cursorAnims.linkMouseLeave}>
-					<IoMdArrowRoundBack className={styles.icon} />
-					<h1>Back</h1>
-				</a>
-			</div>
+			<Back />
 
 			<div className={styles.body}>
 				<main className={styles.main}>

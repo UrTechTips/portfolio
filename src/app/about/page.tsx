@@ -11,6 +11,7 @@ import { useRouter } from "next/navigation";
 import { gsapContext } from "../context";
 import Link from "next/link";
 import { FaGithub, FaLinkedin } from "react-icons/fa";
+import Back from "@/components/backLink/backLink.component";
 
 const About = () => {
 	const router = useRouter();
@@ -23,13 +24,14 @@ const About = () => {
 	};
 	return (
 		<div className={styles.container}>
-			<div className={styles.navbar}>
+			{/* <div className={styles.navbar}>
 				<div onMouseEnter={cursorAnims.linkMouseEnter} onMouseLeave={cursorAnims.linkMouseLeave} onClick={homepageNavigate}>
 					<IoMdArrowRoundBack className={styles.icon} />
 
 					<h1 className={styles.h1}>Back</h1>
 				</div>
-			</div>
+			</div> */}
+			<Back />
 			<div className={styles.bio}>
 				<h1>About</h1>
 				<div>

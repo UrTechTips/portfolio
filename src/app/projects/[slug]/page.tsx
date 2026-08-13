@@ -1,4 +1,3 @@
-// app/projects/[slug]/page.tsx
 import { compileMDX } from "next-mdx-remote/rsc";
 import { notFound } from "next/navigation";
 import { getAllProjectSlugs, getAllProjectsMeta, getProjectSource } from "@/lib/projects";

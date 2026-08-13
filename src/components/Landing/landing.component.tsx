@@ -1,19 +1,19 @@
 "use client";
 
+import { gsapContext } from "@/app/context";
+import MainAlert from "@/components/mainAlert/mainAlert.component";
 import SideNav from "@/components/sideNav/sideNav.component";
+import useCursorAnim from "@/hooks/useCursorAnimations";
+import { ProjectFrontmatter } from "@/lib/projects";
+import portfolioDataType from "@/types/portfolioData.type";
 import { useGSAP } from "@gsap/react";
 import { DotLottieReact } from "@lottiefiles/dotlottie-react";
-import { FC, useContext, useEffect, useRef, useState } from "react";
-import { FaExternalLinkAlt, FaGithub, FaLinkedin } from "react-icons/fa";
-import SplitType from "split-type";
-import styles from "./page.module.scss";
-import useCursorAnim from "@/hooks/useCursorAnimations";
-import { useRouter } from "next/navigation";
 import Link from "next/link";
-import MainAlert from "@/components/mainAlert/mainAlert.component";
-import { gsapContext } from "@/app/context";
-import portfolioDataType from "@/types/portfolioData.type";
-import { ProjectFrontmatter } from "@/lib/projects";
+import { FC, useContext, useRef, useState } from "react";
+import { FaGithub, FaLinkedin } from "react-icons/fa";
+import SplitType from "split-type";
+import ProjectsList from "../projectsList/projectsList.component";
+import styles from "./page.module.scss";
 
 interface LandingProps {
 	portfolioData: portfolioDataType;
@@ -22,7 +22,6 @@ interface LandingProps {
 }
 
 const Landing: FC<LandingProps> = ({ portfolioData, projects, config }) => {
-	const router = useRouter();
 	const heroTextsRef = useRef(null);
 	const navItemsRef1 = useRef<HTMLAnchorElement>(null);
 	const navItemsRef2 = useRef<HTMLAnchorElement>(null);
@@ -30,7 +29,6 @@ const Landing: FC<LandingProps> = ({ portfolioData, projects, config }) => {
 	const buttonRef = useRef<HTMLInputElement>(null);
 	const gsap = useContext(gsapContext).gsap;
 	const cursorRef = useContext(gsapContext).cursorRef;
-	const isCursorStuck = useContext(gsapContext).isCursorStuck;
 	const cursorAnims = useCursorAnim(cursorRef);
 
 	const [name, setName] = useState("");
@@ -86,11 +84,6 @@ const Landing: FC<LandingProps> = ({ portfolioData, projects, config }) => {
 		}
 	};
 
-	const handleProjectClick = (name: string) => {
-		cursorAnims.projectMouseLeave();
-		router.push(`\\projects\\${name.toLowerCase().replaceAll(" ", "-")}`);
-	};
-
 	const handleMainAlertClose = () => {
 		setIsMainAlertVisible(false);
 	};
@@ -144,7 +137,8 @@ const Landing: FC<LandingProps> = ({ portfolioData, projects, config }) => {
 				<div className={styles.bodyBlack}>
 					<div className={styles.projects} id="Projects">
 						<h1>Selected Projects</h1>
-						{projects.map((project, index) => {
+						<ProjectsList projects={projects} />
+						{/* {projects.map((project, index) => {
 							return (
 								<div key={index} className={styles.project} id="project">
 									<div className={styles.left} onClick={() => handleProjectClick(project.title)} onMouseEnter={() => cursorAnims.projectMouseEnter(project.thumbnail!)} onMouseLeave={() => cursorAnims.projectMouseLeave()}>
@@ -163,7 +157,7 @@ const Landing: FC<LandingProps> = ({ portfolioData, projects, config }) => {
 									</div>
 								</div>
 							);
-						})}
+						})} */}
 					</div>
 				</div>
 				<div className={styles.bodyBlack}>

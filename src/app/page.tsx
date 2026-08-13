@@ -27,7 +27,6 @@ const getStatics = async (): Promise<Repo> => {
 export default async function Home() {
 	const { portfolioData, config } = await getStatics();
 	const all = getAllProjectsMeta();
-	console.log("All projects meta:", all); // Debugging line to check the fetched data
 
 	return (
 		<>

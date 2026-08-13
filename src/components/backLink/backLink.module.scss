@@ -1,0 +1,23 @@
+.navbar {
+	padding-left: 2rem;
+	padding-block: 1rem;
+	display: flex;
+	justify-content: flex-start;
+	align-items: center;
+	color: #fff;
+	mix-blend-mode: difference;
+
+	.icon {
+		font-size: 1.5rem;
+	}
+	.h1 {
+		font-size: 1.5rem;
+	}
+
+	> * {
+		display: flex;
+		justify-content: flex-start;
+		align-items: center;
+		gap: 0.5rem;
+	}
+}
