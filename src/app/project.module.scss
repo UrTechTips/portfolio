@@ -11,23 +11,6 @@
 	left: 0;
 }
 
-.navbar {
-	// position: fixed;
-	margin-top: 1rem;
-	padding-inline: 2rem;
-
-	.icon {
-		font-size: 1.5rem;
-	}
-
-	a {
-		display: flex;
-		align-items: center;
-		gap: 0.3rem;
-		font-size: 0.7rem;
-	}
-}
-
 .body {
 	width: 60%;
 	margin-inline: auto;

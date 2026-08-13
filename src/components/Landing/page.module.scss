@@ -1,26 +1,5 @@
 @import url("https://fonts.googleapis.com/css2?family=Lato:ital,wght@0,100;0,300;0,400;0,700;0,900;1,100;1,300;1,400;1,700;1,900&display=swap");
 
-.cursor {
-	z-index: 99999999999;
-	width: 1.5rem;
-	height: 1.5rem;
-	border-radius: 50%;
-
-	position: absolute;
-	background-color: #ffffff;
-	mix-blend-mode: difference;
-	transform: translate(-50%, -50%);
-	transition: all 0.25s ease-out;
-	pointer-events: none;
-
-	display: none;
-}
-
-.cursorHover {
-	width: 5rem;
-	height: 5rem;
-}
-
 .landing {
 	background: linear-gradient(90deg, rgba(217, 217, 217, 1) 0%, rgba(217, 217, 217, 1) 50%, rgba(13, 17, 18, 1) 50%, rgba(13, 17, 18, 1) 100%) !important;
 	nav {
@@ -28,7 +7,7 @@
 		display: flex;
 		justify-content: flex-start;
 		align-items: center;
-
+ 
 		h1 {
 			position: fixed;
 			margin-left: 2rem;

@@ -1,14 +1,12 @@
 "use client";
 import Cursor from "@/components/cursor/cursor.component";
+import { Analytics } from "@vercel/analytics/react";
 import gsap from "gsap";
 import { Inter } from "next/font/google";
 import Head from "next/head";
 import React, { useRef, useState } from "react";
 import { gsapContext } from "./context";
 import "./globals.css";
-import { Analytics } from "@vercel/analytics/react";
-import Loading from "@/components/loading/loading.component";
-import { useRouter } from "next/router";
 
 const inter = Inter({ subsets: ["latin"] });
 
