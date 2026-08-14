@@ -9,8 +9,8 @@
 		content: "";
 		position: absolute;
 		width: 6px;
-		// height: 100%;
-		height: var(--timeline-height, 0%);
+		height: 100%;
+		// height: var(--timeline-height, 0%);
 		background: #000;
 		top: 0;
 		left: 50%;
