@@ -5,8 +5,23 @@ import portfolioDataType from "@/types/portfolioData.type";
 import { Metadata } from "next";
 import { getAllProjectsMeta } from "@/lib/projects";
 
-export const metadata: Metadata = {
-	title: "STron",
+export const metadata = {
+  title: "Sai Sreenadh (STron) — CSE (AI & ML) Student & Developer",
+  description:
+    "Sai Sreenadh (STron) is a CSE (AI & ML) student at VIT-AP who builds full-stack applications, machine learning systems, and GenAI projects.",
+  keywords: [
+    "Sai Sreenadh",
+    "STron",
+    "Sai Sreenadh developer",
+    "VIT-AP",
+    "AI ML student",
+    "full-stack developer",
+    "machine learning",
+    "GenAI",
+    "Next.js",
+    "Python",
+  ],
+  authors: [{ name: "Sai Sreenadh" }],
 };
 
 type Repo = {

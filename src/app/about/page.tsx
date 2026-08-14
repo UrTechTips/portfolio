@@ -2,35 +2,21 @@
 import Timeline from "@/components/timeline/timeline.component";
 import useCursorAnimations from "@/hooks/useCursorAnimations";
 import { useContext } from "react";
-import { IoMdArrowRoundBack } from "react-icons/io";
 import portfolio from "../../../public/portfolio.json";
 import styles from "./about.module.scss";
 
+import Back from "@/components/backLink/backLink.component";
 import Image from "next/image";
-import { useRouter } from "next/navigation";
-import { gsapContext } from "../context";
 import Link from "next/link";
 import { FaGithub, FaLinkedin } from "react-icons/fa";
-import Back from "@/components/backLink/backLink.component";
+import { gsapContext } from "../context";
 
 const About = () => {
-	const router = useRouter();
 	const cursorRef = useContext(gsapContext).cursorRef;
 	const cursorAnims = useCursorAnimations(cursorRef);
 
-	const homepageNavigate = () => {
-		cursorAnims.linkMouseLeave();
-		router.push("/");
-	};
 	return (
 		<div className={styles.container}>
-			{/* <div className={styles.navbar}>
-				<div onMouseEnter={cursorAnims.linkMouseEnter} onMouseLeave={cursorAnims.linkMouseLeave} onClick={homepageNavigate}>
-					<IoMdArrowRoundBack className={styles.icon} />
-
-					<h1 className={styles.h1}>Back</h1>
-				</div>
-			</div> */}
 			<Back />
 			<div className={styles.bio}>
 				<h1>About</h1>

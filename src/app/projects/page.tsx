@@ -4,10 +4,24 @@ import ProjectsList from "@/components/projectsList/projectsList.component";
 import Back from "@/components/backLink/backLink.component";
 import { Metadata } from 'next';
 
-export const metadata: Metadata = {
-	title: "Projects | STron",
+export const metadata = {
+  title: "Projects — Sai Sreenadh (STron)",
+  description:
+    "Explore projects by Sai Sreenadh (STron), spanning full-stack development, machine learning, computer vision, and GenAI.",
+  keywords: [
+    "Sai Sreenadh projects",
+    "STron projects",
+    "developer portfolio",
+    "machine learning projects",
+    "AI projects",
+    "GenAI projects",
+    "full-stack projects",
+    "Next.js projects",
+    "Python projects",
+  ],
+  authors: [{ name: "Sai Sreenadh" }],
 };
-    
+
 const Projects = () => {
     const all = getAllProjectsMeta();
 
