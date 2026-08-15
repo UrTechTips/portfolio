@@ -93,7 +93,7 @@ const Landing: FC<LandingProps> = ({ portfolioData, projects, config }) => {
 			<SideNav navRefs={[navItemsRef1, navItemsRef2, navItemsRef3]} mouseEnter={cursorAnims.linkMouseEnter} mouseLeave={cursorAnims.linkMouseLeave}></SideNav>
 			<div className={styles.landing}>
 				<nav>
-					<h1>STron</h1>
+					<span>STron</span>
 				</nav>
 				{isMainAlertVisible && (
 					<MainAlert onClose={handleMainAlertClose}>
@@ -121,7 +121,7 @@ const Landing: FC<LandingProps> = ({ portfolioData, projects, config }) => {
 			<div className={styles.body}>
 				<div className={styles.about} id="About">
 					<div className={styles.mainSection}>
-						<h1>About</h1>
+						<h2>About</h2>
 						<p style={{ whiteSpace: "pre-line", lineHeight: "1.9rem" }}>{portfolioData.about}</p>
 					</div>
 					<div className={styles.bento}>
@@ -136,7 +136,7 @@ const Landing: FC<LandingProps> = ({ portfolioData, projects, config }) => {
 				</div>
 				<div className={styles.bodyBlack}>
 					<div className={styles.projects} id="Projects">
-						<h1>Selected Projects</h1>
+						<h2>Selected Projects</h2>
 						<ProjectsList projects={projects} />
 						{/* {projects.map((project, index) => {
 							return (
@@ -163,7 +163,7 @@ const Landing: FC<LandingProps> = ({ portfolioData, projects, config }) => {
 				<div className={styles.bodyBlack}>
 					<div className={styles.contact} id="Contact">
 						<div className={styles.left}>
-							<h1>Want to make a project together?</h1>
+							<h2>Want to make a project together?</h2>
 							<h3>Reach out to me.</h3>
 							<div className={styles.icons}>
 								<Link href={portfolioData.github} target="_blank">

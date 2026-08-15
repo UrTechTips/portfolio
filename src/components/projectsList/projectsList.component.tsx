@@ -22,9 +22,9 @@ const ProjectsList = ({projects}: {projects: ProjectFrontmatter[]}) => {
             return (
                 <div key={index} className={styles.project} id="project">
                             <div className={styles.left} onClick={() => handleProjectClick(project.title)} onMouseEnter={() => cursorAnims.projectMouseEnter(project.thumbnail!)} onMouseLeave={() => cursorAnims.projectMouseLeave()}>
-                                <h2>
+                                <h3>
                                     <span>#{index + 1}</span> {project.title}
-                                </h2>
+                                </h3>
                             </div>
                             <div className={styles.right}>
                                 {project.mainLink != "DNE" ? (

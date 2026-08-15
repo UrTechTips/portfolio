@@ -22,12 +22,10 @@ const About = () => {
 				<h1>About</h1>
 				<div>
 					<div>
-						<h2>
-							<span>Hello! I’m Sai Sreenadh,</span> a passionate <span>Full-Stack Developer</span> currently pursuing a <span>B.Tech degree</span>. I specialize in creating intuitive and responsive user interfaces with tools like <span>Next.js</span> and <span>Figma</span>, while also ensuring seamless backend functionality using <span>Node.js</span> and <span>Express</span>. My focus is on building user-friendly, efficient web applications that merge both <span>technical proficiency</span> and <span>creative design</span>.
-						</h2>
-						<h2>
-							I’m committed to continuously learning and evolving in the fast-paced world of technology, always seeking innovative solutions and staying up-to-date with the latest tools and trends in <span>web development</span>.
-						</h2>
+						<p>I'm Sai Sreenadh, though you'll probably find me online as <span>STron</span>. I'm a CSE (AI & ML) student at VIT-AP, interested in building software across the stack — from thoughtful interfaces and full-stack applications to machine learning and GenAI systems.</p>
+						<p>I started with web development and UI design before gradually moving into backend development, machine learning, computer vision, NLP, and GenAI. I've worked with technologies like Next.js, React, Node.js, MongoDB, Python, FastAPI, and PyTorch, building projects ranging from RAG systems and deepfake detection to ML-based applications.</p>
+						<p>What interests me most is solving interesting problems rather than simply using new technology. I like understanding how things work, experimenting with different approaches, and turning ideas into practical software that people can actually use.</p>
+						<p>Outside of tech, I'm usually playing video games, reading, or exploring something new. I'm still figuring out where this path will take me, but I know I want to keep building, learning, and working on things that make me curious..</p>
 						<div className={styles.icons}>
 							<Link href={portfolio.github} target="_blank">
 								<FaGithub onMouseEnter={cursorAnims.linkMouseEnter} onMouseLeave={cursorAnims.linkMouseLeave} />
@@ -41,7 +39,7 @@ const About = () => {
 				</div>
 			</div>
 			<div className={styles.timeline}>
-				<h1>Timeline</h1>
+				<h2>Timeline</h2>
 				<Timeline items={portfolio.timeline}></Timeline>
 			</div>
 		</div>

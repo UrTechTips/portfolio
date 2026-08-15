@@ -20,7 +20,7 @@ const Timeline: React.FC<TimelineProps> = ({ items }) => {
 				<div key={index} className={`${styles.container} ${index % 2 === 0 ? styles.left : styles.right}`}>
 					<img src={item.image} alt="Amazon" />
 					<div className={styles.textBox}>
-						<h2>{item.title}</h2>
+						<h3>{item.title}</h3>
 						<small>{item.duration}</small>
 						<p>{item.content}</p>
 						<span className={index % 2 === 0 ? styles.leftContainerArrow : styles.rightContainerArrow}></span>

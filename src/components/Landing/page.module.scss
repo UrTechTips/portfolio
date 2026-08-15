@@ -8,10 +8,11 @@
 		justify-content: flex-start;
 		align-items: center;
  
-		h1 {
+		span {
 			position: fixed;
 			margin-left: 2rem;
-			font-size: 2.325rem;
+			font-size: 2rem;
+			font-weight: 700;
 			color: #fff;
 			mix-blend-mode: difference;
 			cursor: pointer;
@@ -120,8 +121,8 @@
 	width: 100%;
 	background-color: rgb(217, 217, 217);
 
-	h1 {
-		font-size: 5rem;
+	h2 {
+		font-size: 4rem;
 		margin-bottom: 2rem;
 	}
 
@@ -136,7 +137,7 @@
 		.left {
 			width: 55%;
 
-			h1 {
+			h2 {
 				font-size: 3.5rem;
 			}
 			h3 {
@@ -206,10 +207,10 @@
 
 		.mainSection {
 			padding-top: 5rem;
-
 			display: flex;
 			flex-direction: row;
 			gap: 5rem;
+
 			p {
 				font-size: 1.5rem;
 				font-family: sans-serif;
