@@ -1,0 +1,47 @@
+---
+title: "Stash"
+order: 2 # TODO: set your real ordering
+tagline: "A local-first money manager for Android with one thing other budgeting apps skip — a Buy-or-Wait engine that tells you whether you can afford a wishlist item and still be okay, and explains why."
+meta:
+  - label: "Role"
+    value: "Solo — Design & Development"
+  - label: "Stack"
+    value: "React Native, Expo & TypeScript"
+  - label: "Timeline"
+    value: "Ongoing"
+  - label: "Status"
+    value: "Live — v1.1.5, Actively Extended"
+results:
+  - label: "Core Engine"
+    value: "Deterministic Buy-or-Wait"
+  - label: "Latest Release"
+    value: "v1.1.5"
+  - label: "Updates"
+    value: "Over-the-air, from inside the app"
+highlights:
+  - "Buy-or-Wait engine that turns a wishlist item into one of four verdicts — Buy now, Almost there, Keep saving, or Don't buy — using a hard safety gate, a comfort gate based on the 2x/3x rule, and a cooling-off period"
+  - "Catches what savings-goal features miss: a goal can be fully funded and still be unsafe to buy if spending it would dip into your buffer or leave an upcoming bill uncovered"
+  - "Every verdict is explainable by design — a checklist shows which checks passed, which failed, and by how much, with no AI guesswork behind it and every threshold configurable"
+  - "Daily spending allowance as the home screen's headline number: remaining budget minus unpaid fixed bills and planned goal contributions, spread over the days left and recalculated from scratch each day"
+  - "Over-the-air updates built from scratch for a sideloaded app: Stash checks for a new release on launch and from settings, fetches the correct APK from the GitHub release, verifies it, and launches Android's package installer"
+  - "Release pipeline of its own — per-ABI split APKs through a custom Expo config plugin, a GitHub Actions workflow that publishes the update manifest with a universal-APK fallback, and tagged releases from v1.0.0 to v1.1.5"
+  - "Everyday polish shipped release by release: switchable colour palettes, haptic feedback across every screen, a hide-total-balance toggle, and date fields that open a calendar"
+stack: ["React Native", "Expo", "TypeScript", "SQLite", "GitHub Actions", "Gradle"]
+links:
+  - label: "View source on GitHub"
+    href: "https://github.com/UrTechTips/stash"
+  - label: "Download latest release"
+    href: "https://github.com/UrTechTips/stash/releases/latest"
+mainLink: "https://github.com/UrTechTips/stash"
+thumbnail: "/images/stash.png" 
+---
+
+Stash started from a gap I kept noticing in budgeting apps like Cashew. They let you set a savings goal, but all they can tell you is "3,000 saved of 3,000" — not whether spending that 3,000 leaves you with an empty account and rent due next week. I wanted a money manager that answers the question that actually matters: can I afford this and still be okay?
+
+The everyday side is deliberately simple: accounts, transactions, a monthly budget, and a daily spending allowance as the headline number on the home screen. The allowance is the remaining budget minus unpaid fixed bills and planned goal contributions, divided across the days left in the month. It's recalculated from scratch every day, so underspending today raises tomorrow's number and overspending lowers it, without any stored state that can drift out of sync.
+
+The part that makes it more than a tracker is the Buy-or-Wait engine. It's a small set of pure functions: hand it a snapshot of your finances and a wishlist item, and it returns a verdict. The floor is your safety buffer plus upcoming bills plus money earmarked for other goals; a purchase has to clear that floor with a cushion of two or three times its price, scaled to how big it is relative to your income, and wants have to survive a cooling-off period first. Because the engine is deterministic, every verdict ships with a checklist of what passed and what failed — a fully funded 3,000 keyboard still comes back as "not yet" when buying it would leave you 500 below your buffer and bills.
+
+I built it in React Native rather than as a WebView-wrapped web app, since I wanted it to feel native and already knew JavaScript and React well. Because Stash is sideloaded rather than shipped through the Play Store, I also had to build my own update path: on launch, or from settings, the app looks for a newer GitHub release, downloads the right per-ABI APK, verifies it, and hands it to the system package installer. Getting there meant splitting the APKs per architecture to cut file size and install time, and a GitHub Actions workflow that publishes the update manifest with a universal-APK fallback so older builds keep updating.
+
+Since v1.0.0 it has gone through several tagged releases: colour palettes (a feature I tracked as a GitHub issue), haptics on every screen, a toggle to hide the total balance, and a cleaner home screen.
